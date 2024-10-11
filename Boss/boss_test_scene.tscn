@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdmdhaw2ubde7"]
+
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="1_cx4vy"]
+[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="2_s366e"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hupk3"]
+
+[node name="BossTestScene" type="Node2D"]
+
+[node name="Boss" parent="." instance=ExtResource("1_cx4vy")]
+position = Vector2(0, -96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_hupk3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2, 29)
+scale = Vector2(14.48, 0.44)
+texture = ExtResource("2_s366e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -159)
