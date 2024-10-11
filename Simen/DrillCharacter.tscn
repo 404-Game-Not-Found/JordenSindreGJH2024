@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtfmh41tl8i6l"]
+
+[ext_resource type="Script" path="res://Simen/DrillCharacter.cs" id="1_4vhbw"]
+[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_x3rcr"]
+[ext_resource type="Script" path="res://Simen/DrillPhysics.cs" id="2_2kbax"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5mhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x3rcr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e48yp"]
+size = Vector2(126, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20lnj"]
+size = Vector2(184, 188)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 4
+script = ExtResource("1_4vhbw")
+
+[node name="DrillPhysics" type="Node" parent="."]
+script = ExtResource("2_2kbax")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w5mhy")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_e48yp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 4
+input_pickable = false
+priority = 1
+
+[node name="Trigger" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_20lnj")
