@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8kawbslsm47"]
 
-[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_tsclw"]
+[ext_resource type="Texture2D" uid="uid://t71g88o8vcnf" path="res://RadialMovement/world.png" id="1_2b5kx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wyh0f"]
-radius = 84.0238
+radius = 400.0
 
 [node name="World" type="Area2D"]
-scale = Vector2(10, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_tsclw")
+texture = ExtResource("1_2b5kx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_wyh0f")

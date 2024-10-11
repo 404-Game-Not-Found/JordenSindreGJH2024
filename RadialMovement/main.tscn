@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://blfd8ottb8byg"]
+
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_056me"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2(640, 360)
+
+[node name="World" parent="." instance=ExtResource("1_056me")]
+position = Vector2(640, 2100)
+scale = Vector2(4, 4)
