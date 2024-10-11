@@ -39,7 +39,7 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = 0;
 		}
 
 		_camera.Rotate(_camera.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi/2);
