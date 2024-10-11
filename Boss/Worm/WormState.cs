@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespace JordenSindreGJH2024.Boss.Worm;
 
 public abstract class WormState
@@ -11,3 +12,4 @@ public abstract class WormState
    public abstract void EnterState(WormStateManager ctx);
    public abstract void UpdateState(WormStateManager ctx, double deltaTime);
 }
+

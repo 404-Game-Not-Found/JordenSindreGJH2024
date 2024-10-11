@@ -13,6 +13,7 @@ config_version=5
 config/name="JordenSindreGJH2024"
 run/main_scene="res://Boss/boss_test_scene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+run/main_scene="res://Boss/boss_test_scene.tscn"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -84,8 +85,8 @@ crouch={
 
 [rendering]
 
-textures/size/viewport_height=648
-textures/size/viewport_width=1152
+textures/size/viewport_height=720
+textures/size/viewport_width=1280
 textures/stretch/mode="disabled"
 textures/canvas_textures/default_texture_filter=0
-
+textures/stretch/mode="disabled"
