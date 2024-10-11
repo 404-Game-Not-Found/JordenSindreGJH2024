@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://duuxbxkqibeup"]
+[gd_scene load_steps=5 format=3 uid="uid://duuxbxkqibeup"]
 
 [ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_kqt0i"]
+[ext_resource type="Script" path="res://RadialMovement/Player.cs" id="1_l7oel"]
+[ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="3_lf1b4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id28x"]
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_l7oel")
+
+[node name="Camera" type="Camera2D" parent="."]
+ignore_rotation = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_id28x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kqt0i")
+
+[node name="Gravity" parent="." instance=ExtResource("3_lf1b4")]
