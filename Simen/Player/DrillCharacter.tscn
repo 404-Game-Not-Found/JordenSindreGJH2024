@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtfmh41tl8i6l"]
+[gd_scene load_steps=9 format=3 uid="uid://dtfmh41tl8i6l"]
 
 [ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_x3rcr"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementHandler.cs" id="2_6aycc"]
@@ -22,6 +22,9 @@ size = Vector2(126, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20lnj"]
 size = Vector2(184, 188)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tey46"]
+radius = 50.04
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 
@@ -35,24 +38,36 @@ script = ExtResource("4_27cb3")
 [node name="Movement_Drill" type="Node" parent="MovementHandler"]
 script = ExtResource("3_06rx5")
 drillMaxSpeed = 5000.0
-drillAcceleration = 25.0
+drillAcceleration = 100.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerRenderer" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 10
 sprite_frames = SubResource("SpriteFrames_w5mhy")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_e48yp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.515, 0.515)
-
-[node name="Area2D" type="Area2D" parent="."]
+[node name="GroundSensor" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 2
+collision_layer = 7
 collision_mask = 4
+input_pickable = false
+
+[node name="CollisionShape" type="CollisionShape2D" parent="GroundSensor"]
+shape = SubResource("RectangleShape2D_20lnj")
+
+[node name="DrillHitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 256
+collision_mask = 0
 input_pickable = false
 priority = 1
 
-[node name="Trigger" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_20lnj")
+[node name="CollisionShape" type="CollisionShape2D" parent="DrillHitbox"]
+position = Vector2(0, 120)
+shape = SubResource("CircleShape2D_tey46")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.515, 0.515)

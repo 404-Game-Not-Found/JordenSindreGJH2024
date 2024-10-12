@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmj2tuxir0jml"]
+[gd_scene load_steps=4 format=3 uid="uid://7d1gg55xeiow"]
 
 [ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="1_kb3e0"]
 [ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="2_1fgwn"]
