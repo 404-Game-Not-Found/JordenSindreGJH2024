@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmj2tuxir0jml"]
+
+[ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="1_kb3e0"]
+[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="2_1fgwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v53sv"]
+size = Vector2(1041.2, 1040.73)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("1_kb3e0")]
+position = Vector2(-1, -177)
+
+[node name="Ground" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+position = Vector2(34, 421)
+scale = Vector2(7.815, 4.935)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
+position = Vector2(0.063982, 480.648)
+shape = SubResource("RectangleShape2D_v53sv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/StaticBody2D"]
+position = Vector2(-1.53549, 477.001)
+scale = Vector2(8.20735, 8.20735)
+texture = ExtResource("2_1fgwn")
