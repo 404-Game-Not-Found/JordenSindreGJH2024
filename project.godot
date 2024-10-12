@@ -14,7 +14,6 @@ config/name="JordenSindreGJH2024"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-
 [autoload]
 
 Global="*res://RadialMovement/Global.cs"
@@ -29,6 +28,10 @@ mouse_cursor/custom_image="res://title-screen/assets/cursor2.png"
 [dotnet]
 
 project/assembly_name="JordenSindreGJH2024"
+
+[global_group]
+
+WormGotoTrigger=""
 
 [input]
 
@@ -78,15 +81,11 @@ crouch={
 ]
 }
 
-[global_group]
-WormGotoTrigger=""
-
 [layer_names]
 
 2d_physics/layer_1="Default"
 2d_physics/layer_2="GroundTrigger"
 2d_physics/layer_3="Ground"
-
 
 [rendering]
 
