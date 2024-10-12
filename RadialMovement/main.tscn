@@ -5,6 +5,11 @@
 
 [node name="Main" type="Node2D"]
 
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(626, 415)
+ignore_rotation = false
+zoom = Vector2(2, 2)
+
 [node name="World" parent="." instance=ExtResource("1_056me")]
 position = Vector2(640, 2100)
 scale = Vector2(4, 4)
