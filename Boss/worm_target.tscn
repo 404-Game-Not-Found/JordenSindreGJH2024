@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqurkjhpimojy"]
+
+[ext_resource type="Script" path="res://Boss/WormTarget.cs" id="1_3ow08"]
+
+[node name="WormTarget" type="Node"]
+script = ExtResource("1_3ow08")
