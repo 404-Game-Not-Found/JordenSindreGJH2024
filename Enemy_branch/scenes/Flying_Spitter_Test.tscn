@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dglskcuhgw053"]
+
+[ext_resource type="PackedScene" uid="uid://x450fvd1wuev" path="res://Enemy_branch/scenes/Hawk_tuah.tscn" id="1_v0g7k"]
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="1_wqiy4"]
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="2_gta1b"]
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="3_56rxl"]
+[ext_resource type="PackedScene" uid="uid://c1o31215m1j4m" path="res://Enemy_branch/scenes/Flying_spitter.tscn" id="4_an7pn"]
+[ext_resource type="PackedScene" uid="uid://yrdoow4p5aos" path="res://Enemy_branch/scenes/Rammus.tscn" id="6_3xchb"]
+
+[node name="Main" type="Node2D"]
+
+[node name="HawkTuah" parent="." instance=ExtResource("1_v0g7k")]
+position = Vector2(532, 483)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(626, 415)
+ignore_rotation = false
+zoom = Vector2(2, 2)
+script = ExtResource("1_wqiy4")
+_cameraFollowSpeed = 0.85
+
+[node name="World" parent="." instance=ExtResource("2_gta1b")]
+position = Vector2(640, 2100)
+scale = Vector2(4, 4)
+
+[node name="Player" parent="." instance=ExtResource("3_56rxl")]
+position = Vector2(622, 419)
+collision_mask = 33
+
+[node name="Flying_spitter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_an7pn")]
+position = Vector2(694, 462)
+collision_layer = 72
+player = NodePath("../Player")
+
+[node name="Rammus" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_3xchb")]
+player = NodePath("../Player")

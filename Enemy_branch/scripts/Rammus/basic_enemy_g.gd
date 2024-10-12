@@ -1,4 +1,5 @@
-class_name basic_enemy_g extends CharacterBody2D
+
+class_name rammus extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var rc_right: RayCast2D = $RayCastRight
