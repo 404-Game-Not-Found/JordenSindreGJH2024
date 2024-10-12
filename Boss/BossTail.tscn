@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://brgras1ylv7jx"]
+
+[ext_resource type="Texture2D" uid="uid://kbb2r6ht3e6t" path="res://Boss/WormTail.png" id="1_l3lci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqfyq"]
+radius = 18.0
+
+[node name="BossTail" type="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_l3lci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 0)
+shape = SubResource("CircleShape2D_nqfyq")

@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://b77ymi0mnok2j"]
+
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_7ecd4"]
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="1_8nm4x"]
+[ext_resource type="PackedScene" uid="uid://b1slwxwf6b4y1" path="res://Boss/BossSegment.tscn" id="2_avyf4"]
+[ext_resource type="PackedScene" uid="uid://brgras1ylv7jx" path="res://Boss/BossTail.tscn" id="4_m5u65"]
+
+[node name="Main" type="Node"]
+
+[node name="World" parent="." instance=ExtResource("1_7ecd4")]
+scale = Vector2(4, 4)
+
+[node name="BossNode" type="Node" parent="."]
+
+[node name="Boss" parent="BossNode" instance=ExtResource("1_8nm4x")]
+position = Vector2(-460, -1315)
+
+[node name="Camera2D" type="Camera2D" parent="BossNode/Boss"]
+
+[node name="0_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-434, -1315)
+node_a = NodePath("../Boss")
+node_b = NodePath("../BossSegment0")
+softness = 0.1
+
+[node name="BossSegment0" parent="BossNode" instance=ExtResource("2_avyf4")]
+position = Vector2(-407, -1315)
+
+[node name="1_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-382, -1315)
+node_a = NodePath("../BossSegment0")
+node_b = NodePath("../BossSegment1")
+bias = 0.9
+softness = 0.1
+
+[node name="BossSegment1" parent="BossNode" instance=ExtResource("2_avyf4")]
+position = Vector2(-351, -1315)
+
+[node name="2_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-327, -1315)
+node_a = NodePath("../BossSegment1")
+node_b = NodePath("../BossSegment2")
+bias = 0.9
+softness = 0.1
+
+[node name="BossSegment2" parent="BossNode" instance=ExtResource("2_avyf4")]
+position = Vector2(-296, -1315)
+
+[node name="3_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-269, -1315)
+node_a = NodePath("../BossSegment2")
+node_b = NodePath("../BossSegment3")
+bias = 0.9
+softness = 0.1
+
+[node name="BossSegment3" parent="BossNode" instance=ExtResource("2_avyf4")]
+position = Vector2(-238, -1315)
+
+[node name="4_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-213, -1315)
+node_a = NodePath("../BossSegment3")
+node_b = NodePath("../BossSegment4")
+bias = 0.9
+softness = 0.1
+
+[node name="BossSegment4" parent="BossNode" instance=ExtResource("2_avyf4")]
+position = Vector2(-182, -1315)
+
+[node name="5_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-158, -1315)
+node_a = NodePath("../BossSegment4")
+node_b = NodePath("../BossSegment5")
+bias = 0.9
+softness = 0.1
+
+[node name="BossSegment5" parent="BossNode" instance=ExtResource("2_avyf4")]
+position = Vector2(-127, -1315)
+
+[node name="tail_segment" type="PinJoint2D" parent="BossNode"]
+position = Vector2(-74, -1315)
+node_a = NodePath("../BossSegment5")
+node_b = NodePath("../BossTail")
+bias = 0.9
+softness = 0.1
+
+[node name="BossTail" parent="BossNode" instance=ExtResource("4_m5u65")]
+position = Vector2(-74, -1315)

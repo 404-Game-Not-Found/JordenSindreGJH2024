@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1slwxwf6b4y1"]
+
+[ext_resource type="Script" path="res://Boss/BossSegment.cs" id="1_pgtwl"]
+[ext_resource type="Texture2D" uid="uid://dk16fq5enuvnq" path="res://Boss/WormBody.png" id="1_y1838"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kuv3r"]
+radius = 19.0
+height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1brgd"]
+size = Vector2(44, 9)
+
+[node name="BossSegment" type="CharacterBody2D"]
+script = ExtResource("1_pgtwl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_y1838")
+
+[node name="Segment" type="CollisionShape2D" parent="."]
+rotation = -3.14159
+scale = Vector2(1.67339, -0.990984)
+shape = SubResource("CapsuleShape2D_kuv3r")
+
+[node name="TriggerRight" type="Area2D" parent="."]
+position = Vector2(0, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerRight"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1brgd")
+
+[node name="TriggerLeft" type="Area2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerLeft"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1brgd")

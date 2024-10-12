@@ -10,6 +10,9 @@ public partial class WormStateManager : Node
     private WormState _currentState;
     [Export] internal int Acceleration { get; private set; } = 100;
 	[Export] internal int MaxSpeed { get; private set; } = 500;
+
+	[Export]
+	internal WormStateSearching.WormDirection Direction { get; private set; }
 	public Option<WormTarget> Target { get; set; } = new();
 
 	[Export] internal int SearchRange { get; private set; } = 100;
