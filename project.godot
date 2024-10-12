@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="JordenSindreGJH2024"
+run/main_scene="res://title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+mouse_cursor/custom_image="res://title-screen/assets/cursor2.png"
 
 [dotnet]
 

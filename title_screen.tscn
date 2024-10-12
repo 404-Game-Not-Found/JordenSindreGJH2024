@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxewkn1xk3nob"]
+[gd_scene load_steps=8 format=3 uid="uid://cxewkn1xk3nob"]
 
-[ext_resource type="Texture2D" uid="uid://cilalsa83riyk" path="res://pixel.png" id="1_5nqr4"]
+[ext_resource type="Texture2D" uid="uid://d12wqwmkoflyg" path="res://bluepixel.png" id="1_k1x0c"]
+[ext_resource type="Texture2D" uid="uid://bnbfr2aplu6s0" path="res://title-screen/assets/Jorden-logo.png" id="2_2bowj"]
+[ext_resource type="Texture2D" uid="uid://dhoj4lw06gw2c" path="res://title-screen/assets/Jorden-log-shadow.png" id="3_7bsmx"]
+[ext_resource type="Texture2D" uid="uid://3bug4pcwjxy5" path="res://title-screen/assets/Sindre-logo.png" id="3_gmpo1"]
+[ext_resource type="Texture2D" uid="uid://bnoohnma2bww7" path="res://title-screen/assets/Sindre-logo-shadow.png" id="5_63rq8"]
+[ext_resource type="Script" path="res://title-screen/scripts/quit_button.gd" id="6_jxtcw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vx1xl"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -15,4 +22,109 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("1_5nqr4")
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k1x0c")
+
+[node name="Jordens" type="TextureRect" parent="BG"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_vx1xl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 407.0
+offset_top = 33.0
+offset_right = -433.0
+offset_bottom = -516.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2bowj")
+
+[node name="Jordens2" type="TextureRect" parent="BG/Jordens"]
+modulate = Color(1, 1, 1, 0.403922)
+show_behind_parent = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_vx1xl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 23.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bsmx")
+
+[node name="Sindre" type="TextureRect" parent="BG"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 417.0
+offset_top = 124.0
+offset_right = -426.0
+offset_bottom = -422.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gmpo1")
+
+[node name="Sindre" type="TextureRect" parent="BG/Sindre"]
+self_modulate = Color(1, 1, 1, 0.403922)
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 21.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_63rq8")
+
+[node name="StartButton" type="Button" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 459.0
+offset_top = 284.0
+offset_right = -468.0
+offset_bottom = -292.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 459.0
+offset_top = 378.0
+offset_right = -468.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 459.0
+offset_top = 471.0
+offset_right = -468.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+script = ExtResource("6_jxtcw")
