@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="JordenSindreGJH2024"
+config/name="Jorden Sindre"
 run/main_scene="res://title-screen/title_screen.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
-config/icon="res://title-screen/icon.svg"
+config/icon="res://title-screen/Icon.png"
 
 [autoload]
 
