@@ -250,9 +250,9 @@ script = ExtResource("16_vpbls")
 [node name="ThanksTo" type="Label" parent="BG3"]
 layout_mode = 0
 offset_left = 534.0
-offset_top = 380.0
+offset_top = 421.0
 offset_right = 746.0
-offset_bottom = 415.0
+offset_bottom = 456.0
 theme_override_font_sizes/font_size = 25
 text = "Special thanks to:"
 
@@ -273,20 +273,21 @@ script = ExtResource("17_xf4l2")
 [node name="CreatedBy" type="Label" parent="BG3"]
 layout_mode = 0
 offset_left = 557.0
-offset_top = 104.0
+offset_top = 59.0
 offset_right = 723.0
-offset_bottom = 146.0
+offset_bottom = 101.0
 theme_override_font_sizes/font_size = 30
 text = "Created By:"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="Names" type="Label" parent="BG3"]
 layout_mode = 0
 offset_left = 558.0
-offset_top = 163.0
+offset_top = 118.0
 offset_right = 723.0
-offset_bottom = 316.0
+offset_bottom = 271.0
 text = "Thorgal Blanco
 Simen Damm
 Mikal Drivenes
@@ -296,13 +297,35 @@ Kaspar Tvedt Moberg
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="BG3"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 532.0
-offset_top = 428.0
-offset_right = 643.0
-offset_bottom = 468.0
+offset_left = 530.0
+offset_top = 469.0
+offset_right = 641.0
+offset_bottom = 509.0
 scale = Vector2(2, 2)
 texture = ExtResource("18_p54og")
+
+[node name="MusicBy" type="Label" parent="BG3"]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 280.0
+offset_right = 709.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 30
+text = "Music By:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicName" type="Label" parent="BG3"]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 337.0
+offset_right = 722.0
+offset_bottom = 360.0
+text = "Adrian Hegglund"
+horizontal_alignment = 1
+vertical_alignment = 1
