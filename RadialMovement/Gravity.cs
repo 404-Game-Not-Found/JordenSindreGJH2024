@@ -1,7 +1,7 @@
 using Godot;
 // using System;
 
-public partial class Gravity : Node2D
+public partial class Gravity : Node
 {
 	private CharacterBody2D _parent;
 
