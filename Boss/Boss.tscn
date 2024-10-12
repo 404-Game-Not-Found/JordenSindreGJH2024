@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://s8twmlvqdtcg"]
+[gd_scene load_steps=22 format=3 uid="uid://s8twmlvqdtcg"]
 
 [ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_cv0iy"]
 [ext_resource type="Script" path="res://Boss/Worm/WormStateManager.cs" id="4_e5et8"]
@@ -125,6 +125,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omylw"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ureic"]
+
 [node name="Boss" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -142,5 +144,16 @@ shape = SubResource("RectangleShape2D_omylw")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_e5et8")
+SearchRange = 1000
+TurnRange = 1000
+DebugSprite = ExtResource("1_cv0iy")
+Debug = true
+MovementDeviation = 0.5
+MovementAmplitude = 5.0
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Trigger" type="Area2D" parent="." groups=["WormGotoTrigger"]]
+
+[node name="Trigger" type="CollisionShape2D" parent="Trigger"]
+shape = SubResource("CapsuleShape2D_ureic")

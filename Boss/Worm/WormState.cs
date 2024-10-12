@@ -9,5 +9,5 @@ public abstract class WormState
    }
 
    public abstract void EnterState(WormStateManager ctx);
-   public abstract void UpdateState(WormStateManager ctx);
+   public abstract void UpdateState(WormStateManager ctx, double deltaTime);
 }

@@ -9,15 +9,21 @@ public partial class WormStateManager : Node
 {
     private WormState _currentState;
     [Export] internal int Acceleration { get; private set; } = 100;
-	[Export] private int MaxSpeed { get; set; } = 500;
+	[Export] internal int MaxSpeed { get; private set; } = 500;
 	public Option<WormTarget> Target { get; set; } = new();
 
-	[Export] private int SearchRange { get; set; } = 500;
+	[Export] internal int SearchRange { get; private set; } = 100;
+	[Export] internal int TurnRange { get; private set; } = 50;
+	[Export] internal Texture2D DebugSprite;
+	[Export] internal bool Debug = false;
+	[Export] internal float MovementDeviation = 0.05f;
 	
 	private readonly WormState _hunting = new WormStateHunting();
 	private readonly WormState _searching = new WormStateSearching();
 
 	public CharacterBody2D Body { get; private set; }
+	[Export] internal float MovementAmplitude { get; private set; }
+
 	public override void _Ready()
 	{
 		_currentState = _searching;
@@ -28,7 +34,7 @@ public partial class WormStateManager : Node
 
 	public override void _Process(double delta)
 	{
-		_currentState.UpdateState(this);
+		_currentState.UpdateState(this, delta);
 	}
 
 	public void SwitchState(WormState newState)

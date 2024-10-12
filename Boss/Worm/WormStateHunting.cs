@@ -7,7 +7,7 @@ public class WormStateHunting : WormState
         throw new System.NotImplementedException();
     }
 
-    public override void UpdateState(WormStateManager ctx)
+    public override void UpdateState(WormStateManager ctx, double deltaTime)
     {
         throw new System.NotImplementedException();
     }
