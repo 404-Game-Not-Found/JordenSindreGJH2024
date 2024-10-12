@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BossSegment : CharacterBody2D
+public partial class BossSegment : RigidBody2D
 {
 	private Area2D _leftTrigger;
 	private Area2D _rightTrigger;

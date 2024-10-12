@@ -10,7 +10,9 @@ height = 38.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1brgd"]
 size = Vector2(44, 9)
 
-[node name="BossSegment" type="CharacterBody2D"]
+[node name="BossSegment" type="RigidBody2D"]
+mass = 13.05
+gravity_scale = 0.0
 script = ExtResource("1_pgtwl")
 
 [node name="Sprite" type="Sprite2D" parent="."]

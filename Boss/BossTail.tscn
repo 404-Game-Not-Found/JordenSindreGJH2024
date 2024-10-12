@@ -5,7 +5,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nqfyq"]
 radius = 18.0
 
-[node name="BossTail" type="CharacterBody2D"]
+[node name="BossTail" type="RigidBody2D"]
+gravity_scale = 0.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_l3lci")

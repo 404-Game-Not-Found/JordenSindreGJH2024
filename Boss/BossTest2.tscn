@@ -18,70 +18,85 @@ position = Vector2(-460, -1315)
 [node name="Camera2D" type="Camera2D" parent="BossNode/Boss"]
 
 [node name="0_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-434, -1315)
+position = Vector2(-438, -1316)
 node_a = NodePath("../Boss")
 node_b = NodePath("../BossSegment0")
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossSegment0" parent="BossNode" instance=ExtResource("2_avyf4")]
-position = Vector2(-407, -1315)
+position = Vector2(-424, -1315)
 
 [node name="1_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-382, -1315)
+position = Vector2(-399, -1315)
 node_a = NodePath("../BossSegment0")
 node_b = NodePath("../BossSegment1")
-bias = 0.9
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossSegment1" parent="BossNode" instance=ExtResource("2_avyf4")]
-position = Vector2(-351, -1315)
+position = Vector2(-368, -1315)
 
 [node name="2_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-327, -1315)
+position = Vector2(-344, -1315)
 node_a = NodePath("../BossSegment1")
 node_b = NodePath("../BossSegment2")
-bias = 0.9
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossSegment2" parent="BossNode" instance=ExtResource("2_avyf4")]
-position = Vector2(-296, -1315)
+position = Vector2(-313, -1315)
 
 [node name="3_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-269, -1315)
+position = Vector2(-286, -1315)
 node_a = NodePath("../BossSegment2")
 node_b = NodePath("../BossSegment3")
-bias = 0.9
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossSegment3" parent="BossNode" instance=ExtResource("2_avyf4")]
-position = Vector2(-238, -1315)
+position = Vector2(-255, -1315)
 
 [node name="4_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-213, -1315)
+position = Vector2(-230, -1315)
 node_a = NodePath("../BossSegment3")
 node_b = NodePath("../BossSegment4")
-bias = 0.9
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossSegment4" parent="BossNode" instance=ExtResource("2_avyf4")]
-position = Vector2(-182, -1315)
+position = Vector2(-199, -1315)
 
 [node name="5_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-158, -1315)
+position = Vector2(-175, -1315)
 node_a = NodePath("../BossSegment4")
 node_b = NodePath("../BossSegment5")
-bias = 0.9
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossSegment5" parent="BossNode" instance=ExtResource("2_avyf4")]
-position = Vector2(-127, -1315)
+position = Vector2(-144, -1315)
 
 [node name="tail_segment" type="PinJoint2D" parent="BossNode"]
-position = Vector2(-74, -1315)
+position = Vector2(-119, -1315)
 node_a = NodePath("../BossSegment5")
 node_b = NodePath("../BossTail")
-bias = 0.9
-softness = 0.1
+softness = 0.5
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="BossTail" parent="BossNode" instance=ExtResource("4_m5u65")]
-position = Vector2(-74, -1315)
+position = Vector2(-91, -1315)
