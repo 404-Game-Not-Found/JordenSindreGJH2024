@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://s8twmlvqdtcg"]
 
 [ext_resource type="Texture2D" uid="uid://bsh0obae014rl" path="res://Boss/WormHead.png" id="1_1c5io"]
-[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_cv0iy"]
+[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://title-screen/icon.svg" id="1_cv0iy"]
 [ext_resource type="Script" path="res://Boss/Worm/WormStateManager.cs" id="4_e5et8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_olrn3"]

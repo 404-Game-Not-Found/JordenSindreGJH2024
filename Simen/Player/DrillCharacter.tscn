@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dtfmh41tl8i6l"]
 
-[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_x3rcr"]
+[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://title-screen/icon.svg" id="1_x3rcr"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementHandler.cs" id="2_6aycc"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementDrill.cs" id="3_06rx5"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementNormal.cs" id="4_27cb3"]

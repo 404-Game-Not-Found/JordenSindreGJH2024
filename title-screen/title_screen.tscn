@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cxewkn1xk3nob"]
 
-[ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://BG-test.png" id="1_7vdax"]
+[ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://title-screen/BG-test.png" id="1_7vdax"]
 [ext_resource type="Texture2D" uid="uid://bnbfr2aplu6s0" path="res://title-screen/assets/Jorden-logo.png" id="2_2bowj"]
 [ext_resource type="Script" path="res://title-screen/scripts/cloudspawner.gd" id="2_44ot2"]
 [ext_resource type="Texture2D" uid="uid://dhoj4lw06gw2c" path="res://title-screen/assets/Jorden-log-shadow.png" id="3_7bsmx"]
@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bnoohnma2bww7" path="res://title-screen/assets/Sindre-logo-shadow.png" id="5_63rq8"]
 [ext_resource type="Script" path="res://title-screen/scripts/quit_button.gd" id="6_jxtcw"]
 [ext_resource type="Script" path="res://title-screen/scripts/options_button.gd" id="7_payfh"]
-[ext_resource type="Script" path="res://return_button.gd" id="9_4hhv8"]
-[ext_resource type="Script" path="res://bg_2.gd" id="9_p2pqm"]
-[ext_resource type="Script" path="res://AudioCounter.cs" id="11_e4y2h"]
-[ext_resource type="Script" path="res://VolumeSlider.cs" id="11_oehnx"]
+[ext_resource type="Script" path="res://title-screen/return_button.gd" id="9_4hhv8"]
+[ext_resource type="Script" path="res://title-screen/bg_2.gd" id="9_p2pqm"]
+[ext_resource type="Script" path="res://title-screen/AudioCounter.cs" id="11_e4y2h"]
+[ext_resource type="Script" path="res://title-screen/VolumeSlider.cs" id="11_oehnx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vx1xl"]
 
