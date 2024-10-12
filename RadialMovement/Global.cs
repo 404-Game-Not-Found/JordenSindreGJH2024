@@ -3,7 +3,9 @@ using Godot;
 
 public partial class Global : Node
 {
-    public static StaticBody2D world;
+	public static StaticBody2D world;
+	
+	public static double soundVolume = 50;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

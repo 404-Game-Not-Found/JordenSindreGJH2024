@@ -12,12 +12,8 @@ func _on_button_pressed():
 		change_texture_rects(texture_rect1, texture_rect2)
 
 func change_texture_rects(texture_rect1: TextureRect, texture_rect2: TextureRect):
-	var target_position1 = texture_rect1.position - Vector2(0, -648)
-	var target_position2 = texture_rect2.position - Vector2(0, -648)
-
-	# Print the initial and target positions for debugging
-	print("Moving TextureRect1 from:", texture_rect2.position, "to:", target_position1)
-	print("Moving TextureRect2 from:", texture_rect1.position, "to:", target_position2)
+	var target_position1 = texture_rect1.position - Vector2(0, -texture_rect1.size.y)
+	var target_position2 = texture_rect2.position - Vector2(0, -texture_rect1.size.y)
 
 	# Create a new Tween instance
 	var tween1 = create_tween()  # Tween for texture_rect1
