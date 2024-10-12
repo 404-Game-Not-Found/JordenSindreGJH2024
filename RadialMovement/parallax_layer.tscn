@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce327s6xn8acw"]
+
+[ext_resource type="Script" path="res://RadialMovement/ParallaxLayer.cs" id="1_hjbrt"]
+
+[node name="ParallaxLayer" type="Sprite2D"]
+script = ExtResource("1_hjbrt")

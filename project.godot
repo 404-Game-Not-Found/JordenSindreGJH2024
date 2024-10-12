@@ -11,16 +11,9 @@ config_version=5
 [application]
 
 config/name="JordenSindreGJH2024"
-run/main_scene="res://title_screen.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
-
-[display]
-
-mouse_cursor/custom_image="res://title-screen/assets/cursor2.png"
-run/main_scene="res://Simen/DrillTestScene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
 
 [autoload]
 
@@ -31,6 +24,7 @@ Global="*res://RadialMovement/Global.cs"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://title-screen/assets/cursor2.png"
 
 [dotnet]
 
@@ -84,12 +78,15 @@ crouch={
 ]
 }
 
+[global_group]
+WormGotoTrigger=""
+
 [layer_names]
 
 2d_physics/layer_1="Default"
 2d_physics/layer_2="GroundTrigger"
 2d_physics/layer_3="Ground"
-"|||||||65775a0[global_group]WormGotoTrigger"=""
+
 
 [rendering]
 
