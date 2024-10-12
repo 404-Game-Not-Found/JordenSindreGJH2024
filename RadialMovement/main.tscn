@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://blfd8ottb8byg"]
+
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_056me"]
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="1_yty3f"]
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="2_pgc8d"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(626, 415)
+ignore_rotation = false
+zoom = Vector2(2, 2)
+script = ExtResource("1_yty3f")
+_cameraFollowSpeed = 0.85
+
+[node name="World" parent="." instance=ExtResource("1_056me")]
+position = Vector2(640, 2100)
+scale = Vector2(4, 4)
+
+[node name="Player" parent="." instance=ExtResource("2_pgc8d")]
+position = Vector2(622, 419)
