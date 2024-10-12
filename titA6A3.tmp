@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxewkn1xk3nob"]
+[gd_scene load_steps=13 format=3 uid="uid://cxewkn1xk3nob"]
 
 [ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://BG-test.png" id="1_7vdax"]
 [ext_resource type="Texture2D" uid="uid://bnbfr2aplu6s0" path="res://title-screen/assets/Jorden-logo.png" id="2_2bowj"]
@@ -10,8 +10,7 @@
 [ext_resource type="Script" path="res://title-screen/scripts/options_button.gd" id="7_payfh"]
 [ext_resource type="Script" path="res://return_button.gd" id="9_4hhv8"]
 [ext_resource type="Script" path="res://bg_2.gd" id="9_p2pqm"]
-[ext_resource type="Script" path="res://AudioCounter.cs" id="11_e4y2h"]
-[ext_resource type="Script" path="res://VolumeSlider.cs" id="11_oehnx"]
+[ext_resource type="Script" path="res://audio_counter.gd" id="11_qxyyt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vx1xl"]
 
@@ -177,7 +176,6 @@ offset_left = 390.0
 offset_top = 399.0
 offset_right = -390.0
 offset_bottom = -305.0
-script = ExtResource("11_oehnx")
 
 [node name="AudioLabel" type="Label" parent="BG2"]
 layout_mode = 1
@@ -210,4 +208,4 @@ theme_override_font_sizes/font_size = 20
 text = "10%"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("11_e4y2h")
+script = ExtResource("11_qxyyt")
