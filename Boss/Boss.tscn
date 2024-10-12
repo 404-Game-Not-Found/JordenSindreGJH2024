@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="1_cv0iy"]
 [ext_resource type="Script" path="res://Boss/Worm/WormStateManager.cs" id="4_e5et8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_omylw"]
-size = Vector2(25.625, 28.3784)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olrn3"]
+size = Vector2(24.6875, 19.4595)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ureic"]
 
@@ -16,9 +16,9 @@ texture_filter = 2
 texture = ExtResource("1_1c5io")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, 4.76837e-07)
+position = Vector2(8.25, 0.400001)
 scale = Vector2(1.6, 1.48)
-shape = SubResource("RectangleShape2D_omylw")
+shape = SubResource("RectangleShape2D_olrn3")
 
 [node name="Attack" type="Node" parent="."]
 
@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_omylw")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_e5et8")
-SearchRange = 1000
+SearchRange = 500
 TurnRange = 5000
 DebugSprite = ExtResource("1_cv0iy")
 Debug = true

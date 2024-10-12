@@ -1,17 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdmdhaw2ubde7"]
 
 [ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="1_cx4vy"]
-[ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://BG-test.png" id="2_hy0ka"]
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_hag8n"]
 
-[node name="BossTestScene" type="Node2D"]
+[node name="Main" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_hag8n")]
+scale = Vector2(4, 4)
 
 [node name="Boss" parent="." instance=ExtResource("1_cx4vy")]
-position = Vector2(0, -96)
+position = Vector2(-7, -1148)
 
 [node name="Camera2D" type="Camera2D" parent="Boss"]
-
-[node name="Bg-test" type="Sprite2D" parent="."]
-z_index = -10
-position = Vector2(74, -157)
-scale = Vector2(92.4814, 16.5013)
-texture = ExtResource("2_hy0ka")

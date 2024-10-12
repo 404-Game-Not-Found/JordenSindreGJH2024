@@ -17,12 +17,13 @@ public partial class WormStateManager : Node
 	[Export] internal Texture2D DebugSprite;
 	[Export] internal bool Debug = false;
 	[Export] internal float MovementDeviation = 0.05f;
-	
+	[Export] internal bool Digging { get; set; } = false;
 	private readonly WormState _hunting = new WormStateHunting();
 	private readonly WormState _searching = new WormStateSearching();
-	internal Sprite2D _sprite;
+	internal Sprite2D Sprite { get; private set; }
+	internal CollisionShape2D CollisionShape2D { get; private set; }
 
-	public CharacterBody2D Body { get; private set; }
+	internal CharacterBody2D Body { get; private set; }
 	[Export] internal float MovementAmplitude { get; private set; }
 
 	public override void _Ready()
@@ -30,8 +31,9 @@ public partial class WormStateManager : Node
 		_currentState = _searching;
 		Body = GetParent<CharacterBody2D>();
 		if (Body is null) throw new MissingMemberException("Expected character body 2D"); 
-		_sprite = GetNode<Sprite2D>("Sprite");
-		if (_sprite is null) throw new MissingMemberException("Expected Sprite2D as Sprite"); 
+		CollisionShape2D = Body.GetNode<CollisionShape2D>("CollisionShape2D");
+		Sprite = GetNode<Sprite2D>("../Sprite");
+		if (Sprite is null) throw new MissingMemberException("Expected Sprite2D as Sprite"); 
 		_currentState.EnterState(this);
 	}
 

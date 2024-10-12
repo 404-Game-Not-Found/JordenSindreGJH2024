@@ -23,19 +23,34 @@ public class WormStateSearching : WormState
         _leftPosition = _startPosition - new Vector2(ctx.SearchRange, 0);
         _rightPosition = _startPosition + new Vector2(ctx.SearchRange, 0);
         _direction = new[] {WormDirection.Left, WormDirection.Right}[new RandomNumberGenerator().RandiRange(0, 1)];
-        CreateGotoPositions(ctx);
+        ctx.Sprite.FlipH = _direction == WormDirection.Left;
+        ctx.Digging = true;
+        ctx.CollisionShape2D.Disabled = true;
     }
 
     public override void UpdateState(WormStateManager ctx, double deltaTime)
     {
-        var movement = _direction switch
+        var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
+        var movement = new Vector2(upDirection.Y, -upDirection.X);
+        
+        var threshold = 300f;
+        GD.Print(Global.DistanceFromGround(ctx.Body.GlobalPosition));
+        if (Global.DistanceFromGround(ctx.Body.GlobalPosition) < threshold)
         {
-            WormDirection.Left => new Vector2(ctx.Acceleration, 0),
-            WormDirection.Right => new Vector2(-ctx.Acceleration, 0),
+            movement += _direction == WormDirection.Left ? upDirection : -upDirection;
+        }
+        
+        movement *= _direction switch
+        {
+            WormDirection.Left => ctx.Acceleration,
+            WormDirection.Right => -ctx.Acceleration,
             _ => throw new ArgumentOutOfRangeException()
         };
 
-        ctx.Body.Velocity += movement + SinusNoise(ctx, (float) deltaTime);
+
+		ctx.Body.Rotate(ctx.Body.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi / 2);
+
+        ctx.Body.Velocity += movement;
         if (ctx.Body.Velocity.Length() >= ctx.MaxSpeed)
             ctx.Body.Velocity = ctx.Body.Velocity.Normalized() * ctx.MaxSpeed;
         
@@ -72,10 +87,9 @@ public class WormStateSearching : WormState
             pos.AddChild(cs);
             pos.AreaEntered += other =>
             {
-                GD.Print("AAAAAAAAAAA");
                 if (!other.IsInGroup("WormGotoTrigger")) return;
                 _direction = dir == WormDirection.Left ? WormDirection.Right : WormDirection.Left;
-                ctx._sprite.FlipH = _direction != WormDirection.Left;
+                ctx.Sprite.FlipH = _direction == WormDirection.Left;
             };
             ctx.AddChild(pos);
         }
