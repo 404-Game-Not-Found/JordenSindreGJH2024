@@ -77,7 +77,6 @@ public class WormStateSearching : WormState
             };
             ctx.AddChild(pos);
         }
-        
     }
 
     private static void Debug(WormStateManager ctx, Area2D pos)

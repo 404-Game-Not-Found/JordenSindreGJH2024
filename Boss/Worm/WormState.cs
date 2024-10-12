@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 namespace JordenSindreGJH2024.Boss.Worm;
 
 public abstract class WormState
