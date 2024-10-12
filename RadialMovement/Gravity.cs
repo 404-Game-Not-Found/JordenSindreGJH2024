@@ -3,6 +3,8 @@ using Godot;
 
 public partial class Gravity : Node
 {
+	public bool isActive = true;
+
 	private CharacterBody2D _parent;
 
 	// Called when the node enters the scene tree for the first time.
@@ -20,6 +22,9 @@ public partial class Gravity : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (!isActive)
+			return;
+
 		// Get up direction. Up direction is the direction from the characted
 		// to the center of the world
 		var upDirection = (Global.world.GlobalPosition - _parent.GlobalPosition).Normalized();
