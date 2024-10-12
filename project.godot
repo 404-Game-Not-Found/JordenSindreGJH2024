@@ -33,6 +33,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="JordenSindreGJH2024"
 
+[global_group]
+
+WormGotoTrigger=""
+
 [input]
 
 left={
@@ -86,7 +90,6 @@ crouch={
 2d_physics/layer_1="Default"
 2d_physics/layer_2="GroundTrigger"
 2d_physics/layer_3="Ground"
-"|||||||65775a0[global_group]WormGotoTrigger"=""
 
 [rendering]
 

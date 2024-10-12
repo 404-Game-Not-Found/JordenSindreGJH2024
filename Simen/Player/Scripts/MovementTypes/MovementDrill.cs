@@ -12,25 +12,42 @@ public partial class MovementDrill : _MovementType
 
 	Area2D trigger;
 	CollisionShape2D collider;
+	AnimatedSprite2D renderer;
 
 	public override void _Ready()
 	{
 		base._Ready();
-		trigger = GetNode<Area2D>("%Area2D");
+		trigger = GetNode<Area2D>("%GroundSensor");
 		collider = GetNode<CollisionShape2D>("%Collider");
+		renderer = GetNode<AnimatedSprite2D>("%PlayerRenderer");
 	}
 
 	protected override void ProcessPhysics(double delta)
 	{
 		base.ProcessPhysics(delta);
 
+		GD.Print("Rotating drill");
+		DrillRotate(delta);
+
+
 		if (isDrilling)
+		{
 			ProcessDrill(delta);
+		}
 		else
 		{
 			character.Velocity += character.GetGravity() * (float)delta;
 			GD.Print($"Gravity Velocity: {character.Velocity}");
 		}
+	}
+
+	private void DrillRotate(double delta)
+	{
+		Vector2 mouseDirection = (character.GetGlobalMousePosition() - character.GlobalPosition);
+		//character.Rotate(Mathf.Lerp(0, character.Position.AngleTo(mouseDirection), 0.2f));
+		character.Rotate(Mathf.Lerp(0, character.Transform.BasisXform(Vector2.Down).AngleTo(mouseDirection),0.1f));
+
+		GD.Print($"Mouse direction: {mouseDirection}");
 	}
 
 	void ProcessDrill(double delta)
@@ -40,11 +57,12 @@ public partial class MovementDrill : _MovementType
 		velocityMagnitude += drillAcceleration * ((float)delta);
 		velocityMagnitude = Mathf.Min(velocityMagnitude, drillMaxSpeed);
 
-		Vector2 mouseDirection = character.GetLocalMousePosition().Normalized();
-		Vector2 newVelocity = (mouseDirection).Normalized() * velocityMagnitude;
+		Vector2 downDirection = character.GlobalTransform.BasisXform(Vector2.Down).Normalized();
+		Vector2 newVelocity = (downDirection).Normalized() * velocityMagnitude;
+
 
 		GD.Print($"Drill velocity: {newVelocity}  Magnitude: {newVelocity.Length()}");
-		character.Velocity = newVelocity;
+		character.Velocity = newVelocity.Lerp(character.Velocity.Normalized() * velocityMagnitude, 0.7f);
 
 	}
 
