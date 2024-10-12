@@ -3,6 +3,9 @@ using System;
 
 public partial class Camera : Camera2D
 {
+	[Export]
+	private float _cameraFollowSpeed = 1;
+
 	private CharacterBody2D _player;
 
 	// Called when the node enters the scene tree for the first time.
@@ -15,9 +18,9 @@ public partial class Camera : Camera2D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Rotate(GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi/2);
-		Position = _player.Position;
+		Position = Position.Lerp(_player.Position, _cameraFollowSpeed);
 	}
 }

@@ -11,6 +11,7 @@ position = Vector2(626, 415)
 ignore_rotation = false
 zoom = Vector2(2, 2)
 script = ExtResource("1_yty3f")
+_cameraFollowSpeed = 0.85
 
 [node name="World" parent="." instance=ExtResource("1_056me")]
 position = Vector2(640, 2100)
