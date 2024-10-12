@@ -25,13 +25,14 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://title-screen/assets/cursor2.png"
-run/main_scene="res://Simen/DrillTestScene.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
-config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="JordenSindreGJH2024"
+
+[global_group]
+
+WormGotoTrigger=""
 
 [input]
 
@@ -86,7 +87,6 @@ crouch={
 2d_physics/layer_1="Default"
 2d_physics/layer_2="GroundTrigger"
 2d_physics/layer_3="Ground"
-"|||||||65775a0[global_group]WormGotoTrigger"=""
 
 [rendering]
 
