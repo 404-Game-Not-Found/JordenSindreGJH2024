@@ -15,16 +15,19 @@
 position = Vector2(640, 2100)
 scale = Vector2(4, 4)
 
-[node name="ParallaxLayer" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
-texture = ExtResource("4_n2syw")
-ParallaxRatio = 0.8
+[node name="ParallaxLayer3" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
+modulate = Color(0.833984, 0.626188, 0, 1)
+texture = ExtResource("3_epqgo")
+ParallaxRatio = 0.75
 
 [node name="ParallaxLayer2" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
+modulate = Color(0.0459495, 0.599975, 0, 1)
 texture = ExtResource("2_yikry")
 
-[node name="ParallaxLayer3" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
-texture = ExtResource("3_epqgo")
-ParallaxRatio = 0.2
+[node name="ParallaxLayer" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
+modulate = Color(0.868392, 0, 0.230566, 1)
+texture = ExtResource("4_n2syw")
+ParallaxRatio = 0.25
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(626, 415)
