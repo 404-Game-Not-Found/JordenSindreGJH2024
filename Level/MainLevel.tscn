@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://3s22feqyy201"]
+
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_38sgl"]
+[ext_resource type="PackedScene" uid="uid://yrdoow4p5aos" path="res://Enemy_branch/scenes/basic_enemy_g.tscn" id="1_fn142"]
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="2_5o0wa"]
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="3_4e2qg"]
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="5_8apbu"]
+
+[node name="Main" type="Node2D"]
+
+[node name="basic_enemy_g" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_fn142")]
+position = Vector2(1460, -768)
+player = NodePath("../Player")
+
+[node name="World" parent="." instance=ExtResource("1_38sgl")]
+scale = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_5o0wa")]
+position = Vector2(0, -1693)
+
+[node name="Camera" type="Camera2D" parent="."]
+ignore_rotation = false
+script = ExtResource("3_4e2qg")
+
+[node name="Boss" parent="." instance=ExtResource("5_8apbu")]
+position = Vector2(-64, -1504)

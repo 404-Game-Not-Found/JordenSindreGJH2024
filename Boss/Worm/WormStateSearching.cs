@@ -33,8 +33,7 @@ public class WormStateSearching : WormState
         var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
         var movement = new Vector2(upDirection.Y, -upDirection.X);
         
-        var threshold = 300f;
-        GD.Print(Global.DistanceFromGround(ctx.Body.GlobalPosition));
+        var threshold = 150f;
         if (Global.DistanceFromGround(ctx.Body.GlobalPosition) < threshold)
         {
             movement += _direction == WormDirection.Left ? upDirection : -upDirection;
