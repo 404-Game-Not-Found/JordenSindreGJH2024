@@ -3,11 +3,16 @@ using System;
 
 public partial class DrillCharacter : CharacterBody2D
 {
+	public bool isActive = true;
+
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (!isActive)
+			return;
+
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
