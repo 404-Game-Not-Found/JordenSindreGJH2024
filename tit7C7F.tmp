@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxewkn1xk3nob"]
+[gd_scene load_steps=10 format=3 uid="uid://cxewkn1xk3nob"]
 
 [ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://BG-test.png" id="1_7vdax"]
 [ext_resource type="Texture2D" uid="uid://bnbfr2aplu6s0" path="res://title-screen/assets/Jorden-logo.png" id="2_2bowj"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bnoohnma2bww7" path="res://title-screen/assets/Sindre-logo-shadow.png" id="5_63rq8"]
 [ext_resource type="Script" path="res://title-screen/scripts/quit_button.gd" id="6_jxtcw"]
 [ext_resource type="Script" path="res://title-screen/scripts/options_button.gd" id="7_payfh"]
-[ext_resource type="Script" path="res://return_button.gd" id="9_4hhv8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vx1xl"]
 
@@ -142,22 +141,51 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 648.0
-offset_bottom = 648.0
+offset_top = -648.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_7vdax")
 
-[node name="ReturnButton" type="Button" parent="BG2"]
+[node name="clouds2" type="Node2D" parent="BG2"]
+script = ExtResource("2_44ot2")
+
+[node name="StartButton" type="Button" parent="BG2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 459.0
-offset_top = 541.0
+offset_top = 284.0
 offset_right = -468.0
-offset_bottom = -35.0
+offset_bottom = -292.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Return"
-script = ExtResource("9_4hhv8")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="BG2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 459.0
+offset_top = 378.0
+offset_right = -468.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="BG2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 459.0
+offset_top = 471.0
+offset_right = -468.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+script = ExtResource("6_jxtcw")
