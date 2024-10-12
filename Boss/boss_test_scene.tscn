@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdmdhaw2ubde7"]
 
 [ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="1_cx4vy"]
-[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://icon.svg" id="2_s366e"]
+[ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://BG-test.png" id="2_hy0ka"]
 
 [node name="BossTestScene" type="Node2D"]
 
@@ -10,8 +10,8 @@ position = Vector2(0, -96)
 
 [node name="Camera2D" type="Camera2D" parent="Boss"]
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Bg-test" type="Sprite2D" parent="."]
 z_index = -10
-position = Vector2(97.9995, -78)
-scale = Vector2(82.08, 53.88)
-texture = ExtResource("2_s366e")
+position = Vector2(74, -157)
+scale = Vector2(92.4814, 16.5013)
+texture = ExtResource("2_hy0ka")

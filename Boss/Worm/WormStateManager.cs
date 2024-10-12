@@ -13,13 +13,14 @@ public partial class WormStateManager : Node
 	public Option<WormTarget> Target { get; set; } = new();
 
 	[Export] internal int SearchRange { get; private set; } = 100;
-	[Export] internal int TurnRange { get; private set; } = 50;
+	[Export] internal int TurnRange { get; private set; } = 500;
 	[Export] internal Texture2D DebugSprite;
 	[Export] internal bool Debug = false;
 	[Export] internal float MovementDeviation = 0.05f;
 	
 	private readonly WormState _hunting = new WormStateHunting();
 	private readonly WormState _searching = new WormStateSearching();
+	internal Sprite2D _sprite;
 
 	public CharacterBody2D Body { get; private set; }
 	[Export] internal float MovementAmplitude { get; private set; }
@@ -29,6 +30,8 @@ public partial class WormStateManager : Node
 		_currentState = _searching;
 		Body = GetParent<CharacterBody2D>();
 		if (Body is null) throw new MissingMemberException("Expected character body 2D"); 
+		_sprite = GetNode<Sprite2D>("Sprite");
+		if (_sprite is null) throw new MissingMemberException("Expected Sprite2D as Sprite"); 
 		_currentState.EnterState(this);
 	}
 

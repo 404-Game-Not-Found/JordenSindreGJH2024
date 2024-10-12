@@ -72,8 +72,10 @@ public class WormStateSearching : WormState
             pos.AddChild(cs);
             pos.AreaEntered += other =>
             {
+                GD.Print("AAAAAAAAAAA");
                 if (!other.IsInGroup("WormGotoTrigger")) return;
                 _direction = dir == WormDirection.Left ? WormDirection.Right : WormDirection.Left;
+                ctx._sprite.FlipH = _direction != WormDirection.Left;
             };
             ctx.AddChild(pos);
         }
