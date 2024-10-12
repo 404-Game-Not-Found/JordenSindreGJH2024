@@ -13,4 +13,12 @@ public partial class Global : Node
 			GD.PrintErr("Could not get World at path at '/root/Main/World'");
 		}
 	}
+
+	public static double DistanceFromGround(Vector2 position)
+	{
+		var shape = world.GetNode<CollisionShape2D>("CollisionShape2D");
+		var origin = shape.GlobalPosition;
+		var radius = (shape.Shape.GetRect().Size.X * world.Scale.X) / 2;
+		return radius - origin.DistanceTo(position);
+	}
 }
