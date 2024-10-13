@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://yrdoow4p5aos"]
+[gd_scene load_steps=37 format=3 uid="uid://yrdoow4p5aos"]
 
 [ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/basic_enemy_g.gd" id="1_x17a5"]
 [ext_resource type="Script" path="res://Enemy_branch/scripts/State_Machine_Template/StateMachine.gd" id="2_ofkkj"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/cooldown_state.gd" id="7_34pif"]
 [ext_resource type="Texture2D" uid="uid://dsn7llgddewdg" path="res://Enemy_branch/sprites/Golem-sheet.png" id="8_o4kom"]
 [ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="9_vwry2"]
+[ext_resource type="Script" path="res://Simen/Player/Hurtbox.cs" id="10_8ygcu"]
+[ext_resource type="Script" path="res://Simen/Player/Hitbox.cs" id="11_110oh"]
+[ext_resource type="Script" path="res://Simen/Player/Health.cs" id="12_r72hu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_la868"]
 atlas = ExtResource("8_o4kom")
@@ -173,6 +176,12 @@ radius = 7.0
 radius = 50.0
 height = 104.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jq5up"]
+radius = 10.0499
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phg8v"]
+radius = 9.0
+
 [node name="Rammus" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 3
@@ -228,7 +237,34 @@ position = Vector2(0, -6)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snipe_range"]
+visible = false
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_4h4sg")
 
 [node name="Gravity" parent="." instance=ExtResource("9_vwry2")]
+
+[node name="Hurt_box" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+position = Vector2(0, -6)
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("10_8ygcu")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_box"]
+shape = SubResource("CircleShape2D_jq5up")
+
+[node name="Hit_box" type="Area2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("11_110oh")
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box"]
+shape = SubResource("CircleShape2D_phg8v")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("12_r72hu")
+maxHealth = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
