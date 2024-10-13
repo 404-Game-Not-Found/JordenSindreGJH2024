@@ -50,7 +50,6 @@ public class WormStateSearching : WormState
 
 		float angle = ctx.Body.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi / 2;
 		ctx.Body.Rotate(Mathf.Clamp(angle, Mathf.DegToRad(-30), Mathf.DegToRad(30)));
-		GD.Print($"WORM STATE SEARCH   Angle: {Mathf.RadToDeg(angle)}");
 
 		ctx.Body.Velocity += movement;
 		if (ctx.Body.Velocity.Length() >= ctx.MaxSpeed)
