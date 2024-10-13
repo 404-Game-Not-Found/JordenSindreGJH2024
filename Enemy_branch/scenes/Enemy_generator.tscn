@@ -35,7 +35,7 @@ position = Vector2(694, 462)
 collision_layer = 72
 
 [node name="Rammus" parent="." instance=ExtResource("6_1udl2")]
-position = Vector2(-780, 644)
+position = Vector2(377, 328)
 
 [node name="Mob_hub" parent="." node_paths=PackedStringArray("player", "world") instance=ExtResource("7_l43u7")]
 player = NodePath("../Player")
