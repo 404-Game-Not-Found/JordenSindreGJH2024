@@ -25,16 +25,16 @@ public partial class WormStateManager : Node
 	[Export] internal float MovementDeviation = 0.05f;
 	[Export] internal int HuntingTime { get; private set; } = 20;
 	[Export] internal bool Digging { get; set; } = false;
-	[Export] internal Camera Camera { get; set; }
+	[Export] internal RadialMovement.Camera Camera { get; set; }
 	internal readonly WormState Hunting = new WormStateHunting();
 	internal readonly WormState Searching = new WormStateSearching();
 	internal CollisionShape2D CollisionShape2D { get; private set; }
 	
 	internal enum WormDirection
-    	{
-    		Left,
-    		Right
-    	}
+		{
+			Left,
+			Right
+		}
 
 	internal CharacterBody2D Body { get; private set; }
 	[Export] internal float MovementAmplitude { get; private set; }

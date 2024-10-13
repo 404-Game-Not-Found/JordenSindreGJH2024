@@ -1,0 +1,73 @@
+[gd_scene load_steps=21 format=3 uid="uid://dne4e4qx5nuj"]
+
+[ext_resource type="Script" path="res://Splosion/Explosion.cs" id="1_uk4d0"]
+[ext_resource type="Texture2D" uid="uid://blc5auyvvb5vf" path="res://Splosion/golemExplode/shard1.png" id="2_dopqw"]
+[ext_resource type="Texture2D" uid="uid://cqe6s5fdjdysc" path="res://Splosion/golemExplode/shard2.png" id="3_2lcp6"]
+[ext_resource type="Texture2D" uid="uid://miu1flyxdlss" path="res://Splosion/golemExplode/shard3.png" id="4_khl3h"]
+[ext_resource type="Texture2D" uid="uid://bofknlopv4q8c" path="res://Splosion/golemExplode/shard4.png" id="5_76eh8"]
+[ext_resource type="Texture2D" uid="uid://dulucywd5g5qj" path="res://Splosion/golemExplode/shard5.png" id="6_4jmqn"]
+[ext_resource type="Texture2D" uid="uid://b2cduu0y65xrk" path="res://Splosion/golemExplode/shard6.png" id="7_i4cx3"]
+[ext_resource type="Texture2D" uid="uid://dnhgnistbykro" path="res://Splosion/golemExplode/shard7.png" id="8_mgs2y"]
+[ext_resource type="Texture2D" uid="uid://boalpssasy8h0" path="res://Splosion/golemExplode/shard8.png" id="9_g7lwg"]
+[ext_resource type="Texture2D" uid="uid://7l7g3mwgevsr" path="res://Splosion/golemExplode/shard9.png" id="10_xuok8"]
+[ext_resource type="Texture2D" uid="uid://cgowivf4tyi8v" path="res://Splosion/golemExplode/shard10.png" id="11_1g71y"]
+[ext_resource type="Texture2D" uid="uid://t5ueo6r1skiv" path="res://Splosion/Explosion_Cloud.png" id="15_ctlut"]
+[ext_resource type="AudioStream" uid="uid://b8iiiwun58jlt" path="res://Splosion/break1.mp3" id="15_nsjmu"]
+[ext_resource type="AudioStream" uid="uid://ciehuyhdga55" path="res://Splosion/break2.mp3" id="16_lk37p"]
+[ext_resource type="AudioStream" uid="uid://dil0d4c0kwscu" path="res://Splosion/break3.mp3" id="17_a0ljc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiy4u"]
+atlas = ExtResource("15_ctlut")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yov08"]
+atlas = ExtResource("15_ctlut")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb1s6"]
+atlas = ExtResource("15_ctlut")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oln0q"]
+atlas = ExtResource("15_ctlut")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r30oj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiy4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yov08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb1s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oln0q")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="Explosion" type="Node2D"]
+position = Vector2(616, 352)
+script = ExtResource("1_uk4d0")
+_explosionTextures = Array[Texture2D]([ExtResource("2_dopqw"), ExtResource("3_2lcp6"), ExtResource("4_khl3h"), ExtResource("5_76eh8"), ExtResource("6_4jmqn"), ExtResource("7_i4cx3"), ExtResource("8_mgs2y"), ExtResource("9_g7lwg"), ExtResource("10_xuok8"), ExtResource("11_1g71y")])
+_explosionSpeed = 400.0
+_sounds = Array[AudioStreamMP3]([ExtResource("15_nsjmu"), ExtResource("16_lk37p"), ExtResource("17_a0ljc")])
+
+[node name="Cloud" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_r30oj")
+animation = &"explode"
+frame = 1
+frame_progress = 0.399545
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
