@@ -29,7 +29,6 @@ public partial class MovementDrill : _MovementType
 	{
 		base.ProcessPhysics(delta);
 
-		GD.Print("Rotating drill");
 		DrillRotate(delta);
 
 
@@ -53,7 +52,6 @@ public partial class MovementDrill : _MovementType
 
 		character.Rotate(Mathf.Lerp(0, characterRotate, drillControl));
 
-		GD.Print($"Mouse direction: {mouseDirection}");
 	}
 
 	void ProcessDrill(double delta)
@@ -67,7 +65,6 @@ public partial class MovementDrill : _MovementType
 		Vector2 newVelocity = (downDirection).Normalized() * velocityMagnitude;
 
 
-		GD.Print($"Drill velocity: {newVelocity}  Magnitude: {newVelocity.Length()}");
 		character.Velocity = newVelocity.Lerp(character.Velocity.Normalized() * velocityMagnitude, 0.7f);
 
 	}
@@ -111,6 +108,7 @@ public partial class MovementDrill : _MovementType
 
 	public void OnBodyEntered(Node2D body)
 	{
+
 		GD.Print($"Area Entered!   {body.Name}");
 
 
@@ -130,6 +128,7 @@ public partial class MovementDrill : _MovementType
 
 	public void OnBodyExit(Node2D body)
 	{
+
 		if (body.IsInGroup(new StringName("Solid")))
 			return;
 

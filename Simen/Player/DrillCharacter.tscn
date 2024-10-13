@@ -5,13 +5,22 @@
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementDrill.cs" id="3_06rx5"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementNormal2.cs" id="3_qjg80"]
 [ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="5_jqgl1"]
+[ext_resource type="Texture2D" uid="uid://dlae1dxnswlfi" path="res://MainLoop/drill-Sheet.png" id="6_8k0vs"]
 [ext_resource type="Script" path="res://Simen/Player/Hitbox.cs" id="6_8lwn3"]
 [ext_resource type="Script" path="res://Simen/Player/Health.cs" id="6_gt2ma"]
 [ext_resource type="Script" path="res://Simen/Player/Hurtbox.cs" id="7_6nt57"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wc43o"]
-atlas = ExtResource("5_jqgl1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ovyt"]
+atlas = ExtResource("6_8k0vs")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uemhj"]
+atlas = ExtResource("6_8k0vs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdymq"]
+atlas = ExtResource("6_8k0vs")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjjnc"]
 atlas = ExtResource("5_jqgl1")
@@ -53,11 +62,17 @@ region = Rect2(288, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wc43o")
+"texture": SubResource("AtlasTexture_4ovyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uemhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdymq")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -127,8 +142,11 @@ drillAcceleration = 100.0
 
 [node name="PlayerRenderer" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_ipsqd")
 animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0254314
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true

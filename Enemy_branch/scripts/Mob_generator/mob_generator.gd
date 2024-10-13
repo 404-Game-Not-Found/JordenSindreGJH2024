@@ -6,7 +6,7 @@ const FLYING_SPITTER = "flying_spitter"
 const MOB_LIST = [RAMMUS, FLYING_SPITTER]
 const MOB_LIST_LENGTH = len(MOB_LIST)
 
-@export var player: CharacterBody2D= null
+@export var player: Camera2D = null
 @export var world: StaticBody2D = null
 @export var wave_count = 5
 @export var wave_cooldown: float = 30

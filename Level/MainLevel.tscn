@@ -8,9 +8,8 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="basic_enemy_g" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_fn142")]
+[node name="basic_enemy_g" parent="." instance=ExtResource("1_fn142")]
 position = Vector2(1460, -768)
-player = NodePath("../Player")
 
 [node name="World" parent="." instance=ExtResource("1_38sgl")]
 scale = Vector2(4, 4)

@@ -6,7 +6,7 @@ class_name flying_spitter extends CharacterBody2D
 @onready var world: StaticBody2D = $"../%World"
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-@onready var player: CharacterBody2D = $"../%Player"
+@onready var player: Camera2D = $"../%Camera"
 
 
 
