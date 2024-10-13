@@ -17,23 +17,26 @@ public class WormStateHunting : WormState
 		    ctx.SwitchState(ctx.Searching);
 	    }
 	    
-		var movement = ctx.Body.Velocity.Normalized();
+		//var movement = ctx.Body.Velocity.Normalized();
 
 		var trgAcc = ctx.Target.TargetPosition.DirectionTo(ctx.Body.GlobalPosition).Normalized();
-		movement += trgAcc;
-	    
-	    movement.Normalized();
-	    movement *= ctx.Direction switch
-	    {
-		    WormStateManager.WormDirection.Left => ctx.Acceleration,
-		    WormStateManager.WormDirection.Right => -ctx.Acceleration,
-		    _ => throw new ArgumentOutOfRangeException()
-	    };
-	    movement *= 10;
-        
-	    ctx.Body.Rotate(Mathf.Clamp(ctx.Body.GetAngleTo(ctx.Target.TargetPosition) + Mathf.Pi, -Mathf.Pi / 6, Mathf.Pi / 6));
-        
-	    ctx.Body.Velocity += movement;
+		Vector2 movement = ctx.Body.GlobalTransform.BasisXform(Vector2.Left).Normalized();
+
+		movement *= ctx.Acceleration;
+
+
+		Vector2 targetDirection = ctx.Body.GlobalPosition.DirectionTo(ctx.Target.GlobalPosition);
+		float angle = ctx.Body.Transform.BasisXform(Vector2.Left).AngleTo(targetDirection);
+		GD.Print($"WORM STATE SEARCH   Angle1: {Mathf.RadToDeg(angle)}");
+
+		angle = Mathf.Clamp(angle, Mathf.DegToRad(-0.3f), Mathf.DegToRad(0.3f));
+		GD.Print($"WORM STATE SEARCH   Angle2: {Mathf.RadToDeg(angle)}");
+
+		ctx.Body.Rotate(angle);
+
+
+
+		ctx.Body.Velocity += movement;
 	    if (ctx.Body.Velocity.Length() >= ctx.MaxSpeed)
 		    ctx.Body.Velocity = ctx.Body.Velocity.Normalized() * ctx.MaxSpeed;
         		

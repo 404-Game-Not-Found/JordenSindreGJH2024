@@ -38,6 +38,7 @@ metadata/_edit_lock_ = true
 
 [node name="Camera" parent="." instance=ExtResource("4_f3h4y")]
 position = Vector2(1768.7, -947.701)
+zoom = Vector2(0.225, 0.225)
 
 [node name="BossNode" parent="." instance=ExtResource("8_gtlnt")]
 position = Vector2(1596, 512)
