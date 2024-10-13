@@ -8,6 +8,8 @@ public partial class Camera : Camera2D
 
 	public CharacterBody2D Player { get; private set; }
 
+	public Action OnCameraProcessed;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,6 +23,7 @@ public partial class Camera : Camera2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Rotate(GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi/2);
-		Position = Position.Lerp(Player.Position, _cameraFollowSpeed);
+		Position = Position.Lerp(_player.Position, _cameraFollowSpeed);
+		OnCameraProcessed?.Invoke();
 	}
 }
