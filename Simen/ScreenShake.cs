@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using JordenSindreGJH2024.RadialMovement;
 
 public partial class ScreenShake : Node
 {

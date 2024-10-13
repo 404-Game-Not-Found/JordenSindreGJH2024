@@ -1,3 +1,5 @@
+using JordenSindreGJH2024.RadialMovement;
+
 namespace JordenSindreGJH2024.Boss.Worm;
 
 using Godot;

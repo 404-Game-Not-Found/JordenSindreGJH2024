@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtfmh41tl8i6l"]
+[gd_scene load_steps=26 format=3 uid="uid://dtfmh41tl8i6l"]
 
 [ext_resource type="Script" path="res://RadialMovement/Gravity.cs" id="1_nrf8l"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementHandler.cs" id="2_6aycc"]

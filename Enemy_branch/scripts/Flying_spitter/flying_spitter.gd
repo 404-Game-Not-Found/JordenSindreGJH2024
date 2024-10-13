@@ -4,7 +4,7 @@ class_name flying_spitter extends CharacterBody2D
 @onready var snipe_range: Area2D = $snipe_range
 @onready var aggression_range: Area2D = $aggression_range
 @onready var world: StaticBody2D = $"../%World"
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var player: Camera2D = $"../%Camera"
 
