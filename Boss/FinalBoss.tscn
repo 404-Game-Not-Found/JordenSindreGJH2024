@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://f2j0guvl8kl1"]
+
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/BossHead.tscn" id="1_58c3h"]
+[ext_resource type="PackedScene" uid="uid://b1slwxwf6b4y1" path="res://Boss/BossSegment.tscn" id="2_x52no"]
+[ext_resource type="PackedScene" uid="uid://brgras1ylv7jx" path="res://Boss/BossTail.tscn" id="3_amo67"]
+
+[node name="BossNode" type="Node2D"]
+position = Vector2(433, 1174)
+metadata/_edit_group_ = true
+
+[node name="Boss" parent="." instance=ExtResource("1_58c3h")]
+position = Vector2(-562, -1175)
+
+[node name="0_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-542, -1176)
+node_a = NodePath("../Boss")
+node_b = NodePath("../BossSegment0")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossSegment0" parent="." instance=ExtResource("2_x52no")]
+position = Vector2(-520, -1176)
+
+[node name="1_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-497, -1177)
+node_a = NodePath("../BossSegment0")
+node_b = NodePath("../BossSegment1")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossSegment1" parent="." instance=ExtResource("2_x52no")]
+position = Vector2(-474, -1177)
+
+[node name="2_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-451, -1177)
+node_a = NodePath("../BossSegment1")
+node_b = NodePath("../BossSegment2")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossSegment2" parent="." instance=ExtResource("2_x52no")]
+position = Vector2(-427, -1177)
+
+[node name="3_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-405, -1177)
+node_a = NodePath("../BossSegment2")
+node_b = NodePath("../BossSegment3")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossSegment3" parent="." instance=ExtResource("2_x52no")]
+position = Vector2(-382, -1177)
+
+[node name="4_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-359, -1177)
+node_a = NodePath("../BossSegment3")
+node_b = NodePath("../BossSegment4")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossSegment4" parent="." instance=ExtResource("2_x52no")]
+position = Vector2(-336, -1177)
+
+[node name="5_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-314, -1177)
+node_a = NodePath("../BossSegment4")
+node_b = NodePath("../BossSegment5")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossSegment5" parent="." instance=ExtResource("2_x52no")]
+position = Vector2(-291, -1177)
+
+[node name="tail_segment" type="PinJoint2D" parent="."]
+z_index = 5
+position = Vector2(-271, -1177)
+node_a = NodePath("../BossSegment5")
+node_b = NodePath("../BossTail")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
+
+[node name="BossTail" parent="." instance=ExtResource("3_amo67")]
+position = Vector2(-242, -1177)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://x450fvd1wuev"]
+[gd_scene load_steps=15 format=3 uid="uid://x450fvd1wuev"]
 
 [ext_resource type="Script" path="res://Enemy_branch/scripts/Flying_spitter/hawk_tuah.gd" id="1_ntkvg"]
 [ext_resource type="Texture2D" uid="uid://jnmv8rto1meq" path="res://Enemy_branch/sprites/Fireball.png" id="2_2f3e7"]
@@ -79,6 +79,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltn7s"]
+radius = 7.0
+
 [node name="HawkTuah" type="Node2D"]
 script = ExtResource("1_ntkvg")
 
@@ -93,10 +96,14 @@ shape = SubResource("CircleShape2D_8cc0r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_thyq4")
-animation = &"explode"
 autoplay = "default"
-frame = 4
-frame_progress = 1.0
 
 [node name="lifetime" type="Timer" parent="."]
 one_shot = true
+
+[node name="Hit_box" type="Area2D" parent="."]
+position = Vector2(0, 5)
+
+[node name="hit" type="CollisionShape2D" parent="Hit_box"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ltn7s")

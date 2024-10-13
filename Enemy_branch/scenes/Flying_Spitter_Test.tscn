@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1o31215m1j4m" path="res://Enemy_branch/scenes/Flying_spitter.tscn" id="4_an7pn"]
 [ext_resource type="PackedScene" uid="uid://yrdoow4p5aos" path="res://Enemy_branch/scenes/Rammus.tscn" id="6_3xchb"]
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 
 [node name="HawkTuah" parent="." instance=ExtResource("1_v0g7k")]
 position = Vector2(532, 483)

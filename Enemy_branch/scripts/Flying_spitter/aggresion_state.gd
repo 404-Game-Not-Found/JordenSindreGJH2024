@@ -7,15 +7,18 @@ extends Flying_Spitter_State
 @export var chase_speed_multiplier = 0.4
 
 var bullet_scene = preload("res://Enemy_branch/scenes/Hawk_tuah.tscn")
+var spit = preload("res://Enemy_branch/SFX/spit.mp3")
 func fire(angle):
 	var direction = Vector2(1.0,0.0).rotated(angle).normalized()
 	var bullet = bullet_scene.instantiate()
+	entity.audio.play(0.1)
 	bullet.direction = direction
 	bullet.position = entity.position
 	bullet.rotation = angle - PI/2
 	entity.get_parent().add_child(bullet)
 
 func enter(previous_state_path: String, data := {}) -> void:
+	entity.audio.stream = spit
 	swap_dir_timer.wait_time = swap_dir_time
 	swap_dir_timer.one_shot = true
 	swap_dir_timer.start()

@@ -144,7 +144,7 @@ input_pickable = false
 [node name="CollisionShape" type="CollisionShape2D" parent="GroundSensor"]
 shape = SubResource("RectangleShape2D_20lnj")
 
-[node name="DrillHitbox" type="Area2D" parent="."]
+[node name="DrillHitbox" type="Area2D" parent="." groups=["Drill"]]
 unique_name_in_owner = true
 collision_layer = 256
 collision_mask = 0

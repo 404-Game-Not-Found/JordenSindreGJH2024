@@ -6,6 +6,7 @@ class_name rammus extends CharacterBody2D
 @onready var rc_left: RayCast2D = $RayCastLeft
 @onready var snipe_range: Area2D = $snipe_range
 @onready var player: CharacterBody2D = $"../%Player"
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 
@@ -23,11 +24,16 @@ func jump():
 func set_charge_dir():
 	charge_direction = position.direction_to(player.position).normalized()
 
+
+func kill():
+	queue_free()
+
 func _ready() -> void:
-	print("player: ", player)
 	floor_max_angle = 90
 
 
 func _physics_process(delta: float) -> void:
+	if get_node("Health").health <= 0:
+		kill()
 	velocity_ = global_transform.basis_xform_inv(velocity)
 	move_and_slide()
