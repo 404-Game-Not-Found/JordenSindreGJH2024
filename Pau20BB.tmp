@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8km2wgcquclx"]
+
+[ext_resource type="Script" path="res://title-screen/scripts/quit_button.gd" id="1_6jq8i"]
+[ext_resource type="Script" path="res://title_screen_button.gd" id="1_j08u7"]
+[ext_resource type="Script" path="res://Timer.cs" id="1_ud7dt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -7.0
+offset_right = -1245.0
+offset_bottom = -687.0
+scale = Vector2(32.546, 18.6829)
+color = Color(0, 0, 0, 0.552941)
+
+[node name="TitleScreen" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_top = 443.0
+offset_right = -540.0
+offset_bottom = -227.0
+text = "Return to Title"
+script = ExtResource("1_j08u7")
+
+[node name="Desktop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_top = 520.0
+offset_right = -540.0
+offset_bottom = -150.0
+text = "Quit to desktop"
+script = ExtResource("1_6jq8i")
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_top = 367.0
+offset_right = -540.0
+offset_bottom = -303.0
+text = "Resume
+"
+
+[node name="Paused" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 490.0
+offset_top = 33.0
+offset_right = -490.0
+offset_bottom = -487.0
+theme_override_font_sizes/font_size = 30
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="Paused"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.632
+anchor_top = -0.165
+anchor_right = 2.638
+anchor_bottom = 3.425
+offset_left = 595.6
+offset_top = 233.0
+offset_right = -597.4
+offset_bottom = -462.0
+text = "Time: 20:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_ud7dt")

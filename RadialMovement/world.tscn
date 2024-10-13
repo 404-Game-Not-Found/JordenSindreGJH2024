@@ -1,6 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8kawbslsm47"]
+[gd_scene load_steps=7 format=3 uid="uid://c8kawbslsm47"]
 
-[ext_resource type="Texture2D" uid="uid://t71g88o8vcnf" path="res://RadialMovement/world.png" id="1_2b5kx"]
+[ext_resource type="Texture2D" uid="uid://ckatolged72hx" path="res://RadialMovement/world-test.png" id="1_rsbtm"]
+[ext_resource type="Shader" path="res://RadialMovement/grassglobe.gdshader" id="2_3ya84"]
+[ext_resource type="Texture2D" uid="uid://d07kpaas4elet" path="res://RadialMovement/DirtTile.png" id="3_cmc3w"]
+[ext_resource type="Texture2D" uid="uid://w3ehj8sqelbp" path="res://RadialMovement/GrassTile.png" id="4_twhyc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_woj5l"]
+shader = ExtResource("2_3ya84")
+shader_parameter/transition_smoothness = 0.1
+shader_parameter/dirt_radius = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/earth_radius = 0.5
+shader_parameter/texture_scale = Vector2(10, 10)
+shader_parameter/texture_grass = ExtResource("4_twhyc")
+shader_parameter/texture_dirt = ExtResource("3_cmc3w")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wyh0f"]
 radius = 393.001
@@ -10,7 +23,10 @@ position = Vector2(3, 1)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_2b5kx")
+use_parent_material = true
+texture = ExtResource("1_rsbtm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("ShaderMaterial_woj5l")
+use_parent_material = true
 shape = SubResource("CircleShape2D_wyh0f")
