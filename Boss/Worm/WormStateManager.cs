@@ -12,31 +12,37 @@ public partial class WormStateManager : Node
 	[Export] internal int MaxSpeed { get; private set; } = 500;
 
 	[Export]
-	internal WormStateSearching.WormDirection Direction { get; private set; }
-	public Option<WormTarget> Target { get; set; } = new();
+	internal WormDirection Direction { get; private set; }
+	[Export] public WormTarget Target { get; set; }
 
 	[Export] internal int SearchRange { get; private set; } = 100;
+	[Export] internal int SenseDistance { get; private set; } = 100;
 	[Export] internal int TurnRange { get; private set; } = 500;
 	[Export] internal Texture2D DebugSprite;
 	[Export] internal bool Debug = false;
 	[Export] internal float MovementDeviation = 0.05f;
+	[Export] internal int HuntingTime { get; private set; } = 20;
 	[Export] internal bool Digging { get; set; } = false;
-	private readonly WormState _hunting = new WormStateHunting();
-	private readonly WormState _searching = new WormStateSearching();
-	internal Sprite2D Sprite { get; private set; }
+	[Export] internal Camera Camera { get; set; }
+	internal readonly WormState Hunting = new WormStateHunting();
+	internal readonly WormState Searching = new WormStateSearching();
 	internal CollisionShape2D CollisionShape2D { get; private set; }
+	
+	internal enum WormDirection
+    	{
+    		Left,
+    		Right
+    	}
 
 	internal CharacterBody2D Body { get; private set; }
 	[Export] internal float MovementAmplitude { get; private set; }
 
 	public override void _Ready()
 	{
-		_currentState = _searching;
-		Body = GetParent<CharacterBody2D>();
+		_currentState = Searching;
+		Body = GetParent().GetNode<CharacterBody2D>("Boss");
 		if (Body is null) throw new MissingMemberException("Expected character body 2D"); 
 		CollisionShape2D = Body.GetNode<CollisionShape2D>("CollisionShape2D");
-		Sprite = GetNode<Sprite2D>("../Sprite");
-		if (Sprite is null) throw new MissingMemberException("Expected Sprite2D as Sprite"); 
 		_currentState.EnterState(this);
 	}
 
@@ -47,6 +53,16 @@ public partial class WormStateManager : Node
 
 	public void SwitchState(WormState newState)
 	{
+		switch (newState)
+		{
+			case WormStateHunting:
+				GD.Print("Switching to hunting state");
+				break;
+			case WormStateSearching:
+				GD.Print("Switching to searching state");
+				break;
+		}
+
 		_currentState = newState;
 		_currentState.EnterState(this);
 	}

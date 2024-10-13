@@ -1,14 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdmdhaw2ubde7"]
+[gd_scene load_steps=8 format=3 uid="uid://cdmdhaw2ubde7"]
 
-[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="1_cx4vy"]
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_hag8n"]
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="2_wras0"]
+[ext_resource type="PackedScene" uid="uid://cqurkjhpimojy" path="res://Boss/worm_target.tscn" id="3_g0kd7"]
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="4_1oyd1"]
+[ext_resource type="Script" path="res://Boss/Worm/WormStateManager.cs" id="6_dalk6"]
+[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://title-screen/icon.svg" id="7_f6uki"]
+[ext_resource type="PackedScene" uid="uid://f2j0guvl8kl1" path="res://Boss/FinalBoss.tscn" id="8_gtlnt"]
 
 [node name="Main" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_hag8n")]
 scale = Vector2(4, 4)
+metadata/_edit_lock_ = true
 
-[node name="Boss" parent="." instance=ExtResource("1_cx4vy")]
-position = Vector2(-7, -1148)
+[node name="Player" parent="." instance=ExtResource("4_1oyd1")]
+position = Vector2(716, -1467)
 
-[node name="Camera2D" type="Camera2D" parent="Boss"]
+[node name="WormTarget" parent="Player" instance=ExtResource("3_g0kd7")]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(47, -1660)
+ignore_rotation = false
+script = ExtResource("2_wras0")
+
+[node name="BossNode" parent="." instance=ExtResource("8_gtlnt")]
+position = Vector2(1596, 512)
+
+[node name="Movement2" type="Node" parent="BossNode" node_paths=PackedStringArray("Target", "Camera")]
+script = ExtResource("6_dalk6")
+Direction = 1
+Target = NodePath("../../Player/WormTarget")
+SearchRange = 500
+SenseDistance = 1000
+TurnRange = 5000
+DebugSprite = ExtResource("7_f6uki")
+Debug = true
+MovementDeviation = 0.5
+Camera = NodePath("../../Camera")
+MovementAmplitude = 5.0

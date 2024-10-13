@@ -1,22 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://s8twmlvqdtcg"]
+[gd_scene load_steps=4 format=3 uid="uid://s8twmlvqdtcg"]
 
-[ext_resource type="Texture2D" uid="uid://bsh0obae014rl" path="res://Boss/WormHead.png" id="1_1c5io"]
-[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://title-screen/icon.svg" id="1_cv0iy"]
-[ext_resource type="Script" path="res://Boss/Worm/WormStateManager.cs" id="4_e5et8"]
+[ext_resource type="Texture2D" uid="uid://bsh0obae014rl" path="res://Boss/WormHead.png" id="1_ese7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_olrn3"]
-size = Vector2(24.6875, 19.4595)
+size = Vector2(20.3125, 19.4595)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ureic"]
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="BossHead" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 2
-texture = ExtResource("1_1c5io")
+texture = ExtResource("1_ese7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8.25, 0.400001)
+position = Vector2(4.75, 0.400001)
 scale = Vector2(1.6, 1.48)
 shape = SubResource("RectangleShape2D_olrn3")
 
@@ -25,14 +25,6 @@ shape = SubResource("RectangleShape2D_olrn3")
 [node name="Health" type="Node" parent="."]
 
 [node name="Movement" type="Node" parent="."]
-script = ExtResource("4_e5et8")
-Direction = 1
-SearchRange = 500
-TurnRange = 5000
-DebugSprite = ExtResource("1_cv0iy")
-Debug = true
-MovementDeviation = 0.5
-MovementAmplitude = 5.0
 
 [node name="Timer" type="Timer" parent="."]
 
