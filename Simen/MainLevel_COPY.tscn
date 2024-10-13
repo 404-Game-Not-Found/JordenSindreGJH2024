@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://blua5m7v0ih45"]
 
-[ext_resource type="PackedScene" uid="uid://yrdoow4p5aos" path="res://Enemy_branch/scenes/basic_enemy_g.tscn" id="1_468lf"]
+[ext_resource type="PackedScene" uid="uid://yrdoow4p5aos" path="res://Enemy_branch/scenes/Rammus.tscn" id="1_468lf"]
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="2_hsu1j"]
 [ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="3_sh5l4"]
 [ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="4_dnkvp"]
-[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="5_3b0ev"]
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/BossHead.tscn" id="5_3b0ev"]
 
 [node name="Main" type="Node2D"]
 

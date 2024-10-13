@@ -1,27 +1,19 @@
 using System;
 using Godot;
+using LanguageExt;
 
 namespace JordenSindreGJH2024.Boss.Worm;
 
 public class WormStateSearching : WormState
 {
-	internal enum WormDirection
-	{
-		Left,
-		Right
-	}
-	
-	private float _time;
-	
 	public override void EnterState(WormStateManager ctx)
 	{
 		ctx.Digging = true;
-		//ctx.CollisionShape2D.Disabled = true;
 		switch (ctx.Direction)
 		{
-			case WormDirection.Left:
+			case WormStateManager.WormDirection.Left:
 				break;
-			case WormDirection.Right:
+			case WormStateManager.WormDirection.Right:
 				ctx.Body.RotationDegrees += 180;
 				break;
 			default:
@@ -31,19 +23,24 @@ public class WormStateSearching : WormState
 
 	public override void UpdateState(WormStateManager ctx, double deltaTime)
 	{
+		if (ctx.Camera.Player.GlobalPosition.DistanceTo(ctx.Body.GlobalPosition) <= ctx.SenseDistance)
+		{
+			ctx.Target = ctx.Camera.Player.GetNode<WormTarget>("WormTarget");
+			ctx.SwitchState(ctx.Hunting);
+		}
 		var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
 		var movement = new Vector2(upDirection.Y, -upDirection.X);
 		
 		var threshold = 150f;
 		if (Global.DistanceFromGround(ctx.Body.GlobalPosition) < threshold)
 		{
-			movement += ctx.Direction == WormDirection.Left ? upDirection : -upDirection;
+			movement += ctx.Direction == WormStateManager.WormDirection.Left ? upDirection : -upDirection;
 		}
 		
 		movement *= ctx.Direction switch
 		{
-			WormDirection.Left => ctx.Acceleration,
-			WormDirection.Right => -ctx.Acceleration,
+			WormStateManager.WormDirection.Left => ctx.Acceleration,
+			WormStateManager.WormDirection.Right => -ctx.Acceleration,
 			_ => throw new ArgumentOutOfRangeException()
 		};
 
