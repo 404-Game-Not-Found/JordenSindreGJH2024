@@ -170,18 +170,17 @@ priority = 1
 script = ExtResource("6_8lwn3")
 damage = 1
 
-[node name="CollisionShape" type="CollisionShape2D" parent="DrillHitbox"]
+[node name="CollisionShape" type="CollisionShape2D" parent="DrillHitbox" groups=["Drill"]]
 position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_tey46")
 
-[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+[node name="Hurtbox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 128
 collision_mask = 0
 input_pickable = false
 priority = 1
 script = ExtResource("7_6nt57")
-health = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 22)
