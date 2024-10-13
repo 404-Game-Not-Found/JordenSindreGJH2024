@@ -8,12 +8,19 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D _sprite;
 	private AudioStreamPlayer2D _walkAudio;
+	private AudioStreamPlayer2D _jumpAudio;
+	private AudioStreamPlayer2D _landingAudio;
 
-	private FloorChecker _floorChecker;
+	[Export]
+	private AudioStreamMP3[] _jumpSounds;
+	[Export]
+	private AudioStreamMP3[] _landingSounds;
+
+	private bool _inAir = false;
 
 	public override void _Ready()
 	{
-		FloorMaxAngle = 90;
+		FloorMaxAngle = 45;
 
 		_sprite = GetNodeOrNull<AnimatedSprite2D>("Sprite");
 		if (_sprite == null) {
@@ -25,10 +32,17 @@ public partial class Player : CharacterBody2D
 			GD.PrintErr("No AudioStreamPlayer2D with name 'WalkAudio' attached to player...");
 		}
 
-		_floorChecker = GetNodeOrNull<FloorChecker>("FloorChecker");
-		if (_walkAudio == null) {
-			GD.PrintErr("No FloorChecker on player...");
+		_jumpAudio = GetNodeOrNull<AudioStreamPlayer2D>("JumpAudio");
+		if (_jumpAudio == null) {
+			GD.PrintErr("No AudioStreamPlayer2D with name 'JumpAudio' attached to player...");
 		}
+
+		_landingAudio = GetNodeOrNull<AudioStreamPlayer2D>("LandingAudio");
+		if (_landingAudio == null) {
+			GD.PrintErr("No AudioStreamPlayer2D with name 'LandingAudio' attached to player...");
+		}
+
+		GD.Randomize();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -36,20 +50,30 @@ public partial class Player : CharacterBody2D
 		Vector2 velocity = GlobalTransform.BasisXformInv(Velocity);
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && _floorChecker.IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+			_jumpAudio.Stream = _jumpSounds[GD.Randi() % _jumpSounds.Length];
+			_jumpAudio.Play();
+			_inAir = true;
+		} else if (IsOnFloor() && _inAir) {
+			_inAir = false;
+			_landingAudio.Stream = _landingSounds[GD.Randi() % _landingSounds.Length];
+			_landingAudio.Play();
 		}
 
 		// Get the input direction and handle the movement/deceleration.
-		Vector2 direction = Input.GetVector("move_left", "move_right", "jump", "crouch");
+		Vector2 direction = Vector2.Zero;
+		if (Input.IsActionPressed("move_left")) { direction.X -= 1; }
+		if (Input.IsActionPressed("move_right")) { direction.X += 1; }
+
 
 		if (direction.X != 0)
 		{
 			velocity.X = direction.X * Speed;
 
 			// Set run or jump animation
-			if (_floorChecker.IsOnFloor()) {
+			if (IsOnFloor()) {
 				_sprite.Play("run");
 				if (!_walkAudio.Playing)
 					_walkAudio.Play();

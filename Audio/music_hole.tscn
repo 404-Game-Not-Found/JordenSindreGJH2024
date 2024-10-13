@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bulcjb35xg14v"]
+
+[ext_resource type="Texture2D" uid="uid://j0itmt5wkm0y" path="res://Audio/musikkhl.png" id="1_gkv3o"]
+[ext_resource type="AudioStream" uid="uid://dfx00tqli4fkc" path="res://Audio/hole_music.mp3" id="1_kjh0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t86go"]
+atlas = ExtResource("1_gkv3o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y17g5"]
+atlas = ExtResource("1_gkv3o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gppnp"]
+atlas = ExtResource("1_gkv3o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2tm5"]
+atlas = ExtResource("1_gkv3o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dyloa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t86go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y17g5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gppnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2tm5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MusicHole" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dyloa")
+autoplay = "default"
+frame = 2
+frame_progress = 0.497915
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_kjh0i")
+volume_db = -5.0
+autoplay = true
+max_distance = 1000.0
+panning_strength = 3.0

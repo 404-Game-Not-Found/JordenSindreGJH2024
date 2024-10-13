@@ -1,10 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://dt8t08xijo0g6"]
+[gd_scene load_steps=21 format=3 uid="uid://dt8t08xijo0g6"]
 
 [ext_resource type="Script" path="res://RadialMovement/Player.cs" id="1_ysffi"]
+[ext_resource type="AudioStream" uid="uid://dom3curuc7io7" path="res://Audio/jump1.mp3" id="2_6y8xg"]
 [ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="2_bsclv"]
+[ext_resource type="AudioStream" uid="uid://bbb17eopcjcht" path="res://Audio/jump2.mp3" id="3_oll5g"]
 [ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="3_yb5dd"]
 [ext_resource type="AudioStream" uid="uid://c7x8a57e445rp" path="res://Audio/walk_grass.mp3" id="4_heb6n"]
-[ext_resource type="PackedScene" uid="uid://cy0eshryde808" path="res://Audio/floor_checker.tscn" id="5_wk71v"]
+[ext_resource type="AudioStream" uid="uid://dpd7heujru627" path="res://Audio/landing1.mp3" id="4_v7bre"]
+[ext_resource type="AudioStream" uid="uid://ddvhum87oynfm" path="res://Audio/landing2.mp3" id="5_dmk00"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jsd5"]
 radius = 6.0
@@ -101,6 +104,8 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ysffi")
+_jumpSounds = Array[AudioStreamMP3]([ExtResource("2_6y8xg"), ExtResource("3_oll5g")])
+_landingSounds = Array[AudioStreamMP3]([ExtResource("4_v7bre"), ExtResource("5_dmk00")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -114,8 +119,10 @@ animation = &"idle"
 
 [node name="WalkAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_heb6n")
-volume_db = -12.876
+volume_db = -30.705
 
-[node name="FloorChecker" parent="." instance=ExtResource("5_wk71v")]
-position = Vector2(0, 15)
-scale = Vector2(-1.38238, 0.531747)
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -30.0
+
+[node name="LandingAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -30.0
