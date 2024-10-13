@@ -26,6 +26,7 @@ shape = SubResource("RectangleShape2D_olrn3")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_e5et8")
+Direction = 1
 SearchRange = 500
 TurnRange = 5000
 DebugSprite = ExtResource("1_cv0iy")

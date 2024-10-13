@@ -5,104 +5,55 @@ namespace JordenSindreGJH2024.Boss.Worm;
 
 public class WormStateSearching : WormState
 {
-    private enum WormDirection
-    {
-        Left,
-        Right
-    }
-    
-    private Vector2 _startPosition;
-    private Vector2 _leftPosition;
-    private Vector2 _rightPosition;
-    private float _time;
-    
-    private WormDirection _direction;
-    public override void EnterState(WormStateManager ctx)
-    {
-        _startPosition = ctx.Body.GlobalPosition;
-        _leftPosition = _startPosition - new Vector2(ctx.SearchRange, 0);
-        _rightPosition = _startPosition + new Vector2(ctx.SearchRange, 0);
-        _direction = new[] {WormDirection.Left, WormDirection.Right}[new RandomNumberGenerator().RandiRange(0, 1)];
-        ctx.Sprite.FlipH = _direction == WormDirection.Left;
-        ctx.Digging = true;
-        ctx.CollisionShape2D.Disabled = true;
-    }
+	internal enum WormDirection
+	{
+		Left,
+		Right
+	}
+	
+	private float _time;
+	
+	public override void EnterState(WormStateManager ctx)
+	{
+		ctx.Digging = true;
+		//ctx.CollisionShape2D.Disabled = true;
+		switch (ctx.Direction)
+		{
+			case WormDirection.Left:
+				break;
+			case WormDirection.Right:
+				ctx.Body.RotationDegrees += 180;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+	}
 
-    public override void UpdateState(WormStateManager ctx, double deltaTime)
-    {
-        var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
-        var movement = new Vector2(upDirection.Y, -upDirection.X);
-        
-        var threshold = 150f;
-        if (Global.DistanceFromGround(ctx.Body.GlobalPosition) < threshold)
-        {
-            movement += _direction == WormDirection.Left ? upDirection : -upDirection;
-        }
-        
-        movement *= _direction switch
-        {
-            WormDirection.Left => ctx.Acceleration,
-            WormDirection.Right => -ctx.Acceleration,
-            _ => throw new ArgumentOutOfRangeException()
-        };
+	public override void UpdateState(WormStateManager ctx, double deltaTime)
+	{
+		var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
+		var movement = new Vector2(upDirection.Y, -upDirection.X);
+		
+		var threshold = 150f;
+		if (Global.DistanceFromGround(ctx.Body.GlobalPosition) < threshold)
+		{
+			movement += ctx.Direction == WormDirection.Left ? upDirection : -upDirection;
+		}
+		
+		movement *= ctx.Direction switch
+		{
+			WormDirection.Left => ctx.Acceleration,
+			WormDirection.Right => -ctx.Acceleration,
+			_ => throw new ArgumentOutOfRangeException()
+		};
 
 
 		ctx.Body.Rotate(ctx.Body.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi / 2);
 
-        ctx.Body.Velocity += movement;
-        if (ctx.Body.Velocity.Length() >= ctx.MaxSpeed)
-            ctx.Body.Velocity = ctx.Body.Velocity.Normalized() * ctx.MaxSpeed;
-        
-        ctx.Body.MoveAndSlide();
-    }
-
-    private Vector2 SinusNoise(WormStateManager ctx, float deltaTime)
-    {
-        _time += deltaTime;
-        var v =
-            new Vector2(0, ctx.MovementAmplitude * Mathf.Sin(2 * Mathf.Pi * ctx.MovementDeviation * _time))
-                .Normalized() * 50;
-        return v;
-    }
-    
-    private void CreateGotoPositions(WormStateManager ctx)
-    {
-        var leftPos = new Area2D();
-        GotoPosSetup(leftPos, WormDirection.Right);
-        Debug(ctx, leftPos);
-        var rightPos = new Area2D();
-        GotoPosSetup(rightPos, WormDirection.Left);
-        Debug(ctx, rightPos);
-        return;
-
-        void GotoPosSetup(Area2D pos, WormDirection dir)
-        {
-            pos.GlobalPosition = dir == WormDirection.Left ? _rightPosition : _leftPosition;
-            var cs = new CollisionShape2D();
-            cs.GlobalPosition = pos.GlobalPosition;
-            var shape = new RectangleShape2D();
-            shape.Size = shape.Size with { Y = ctx.TurnRange };
-            cs.Shape = shape;
-            pos.AddChild(cs);
-            pos.AreaEntered += other =>
-            {
-                if (!other.IsInGroup("WormGotoTrigger")) return;
-                _direction = dir == WormDirection.Left ? WormDirection.Right : WormDirection.Left;
-                ctx.Sprite.FlipH = _direction == WormDirection.Left;
-            };
-            ctx.AddChild(pos);
-        }
-    }
-
-    private static void Debug(WormStateManager ctx, Area2D pos)
-    {
-        if (!ctx.Debug) return;
-        if (ctx.DebugSprite == null) throw new MissingMemberException("Debug Sprite is null");
-        var sprite = new Sprite2D();
-        sprite.Texture = ctx.DebugSprite;
-        sprite.RotationDegrees = 90;
-        sprite.Scale = sprite.Scale with { X = ctx.TurnRange };
-        sprite.GlobalPosition = pos.GlobalPosition;
-        pos.AddChild(sprite);
-    }
+		ctx.Body.Velocity += movement;
+		if (ctx.Body.Velocity.Length() >= ctx.MaxSpeed)
+			ctx.Body.Velocity = ctx.Body.Velocity.Normalized() * ctx.MaxSpeed;
+		
+		ctx.Body.MoveAndSlide();
+	}
 }
