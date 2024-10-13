@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dt8t08xijo0g6"]
+[gd_scene load_steps=23 format=3 uid="uid://dt8t08xijo0g6"]
 
 [ext_resource type="Script" path="res://RadialMovement/Player.cs" id="1_ysffi"]
 [ext_resource type="AudioStream" uid="uid://dom3curuc7io7" path="res://Audio/jump1.mp3" id="2_6y8xg"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c7x8a57e445rp" path="res://Audio/walk_grass.mp3" id="4_heb6n"]
 [ext_resource type="AudioStream" uid="uid://dpd7heujru627" path="res://Audio/landing1.mp3" id="4_v7bre"]
 [ext_resource type="AudioStream" uid="uid://ddvhum87oynfm" path="res://Audio/landing2.mp3" id="5_dmk00"]
+[ext_resource type="Script" path="res://Simen/Player/Hurtbox.cs" id="9_6ejx2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jsd5"]
 radius = 6.0
@@ -101,6 +102,10 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_51o3l"]
+radius = 7.0
+height = 24.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ysffi")
@@ -126,3 +131,12 @@ volume_db = -30.0
 
 [node name="LandingAudio" type="AudioStreamPlayer2D" parent="."]
 volume_db = -30.0
+
+[node name="Hurt_box" type="Area2D" parent="."]
+position = Vector2(0, 5)
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("9_6ejx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_box"]
+shape = SubResource("CapsuleShape2D_51o3l")

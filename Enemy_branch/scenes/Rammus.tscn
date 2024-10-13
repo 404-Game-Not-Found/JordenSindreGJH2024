@@ -256,7 +256,7 @@ shape = SubResource("CircleShape2D_jq5up")
 [node name="Hit_box" type="Area2D" parent="."]
 position = Vector2(0, -6)
 collision_layer = 0
-collision_mask = 256
+collision_mask = 128
 script = ExtResource("11_110oh")
 damage = 1
 
@@ -265,6 +265,6 @@ shape = SubResource("CircleShape2D_phg8v")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("12_r72hu")
-maxHealth = 2
+maxHealth = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

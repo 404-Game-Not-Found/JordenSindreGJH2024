@@ -7,6 +7,12 @@ public partial class Hurtbox : Area2D
 
 	[Export] Health health;
 
+	public override void _Ready()
+	{
+		if (health != null) return;
+		health = GetNode<Health>("../../Health");
+	}
+
 	public void TakeDamage(int amount)
 	{
 		if (!isActive)

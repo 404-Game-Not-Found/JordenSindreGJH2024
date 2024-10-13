@@ -16,12 +16,12 @@ public partial class Health : Node
 	public override void _Ready()
 	{
 		base._Ready();
-
 		health = maxHealth;
 	}
 
 	public void DealDamage(int damage)
 	{
+		GD.Print("I took dmg: ", this.GetParent().Name);
 		health-=damage;
 		health = Mathf.Max(health, 0);
 

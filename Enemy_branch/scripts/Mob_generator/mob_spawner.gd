@@ -12,7 +12,6 @@ const FLYING_SPITTER = "flying_spitter"
 #var bullet = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
 func spawn_enemy(type):
-	print("spawning enemy")
 	var x = randf_range(-1.0, 1.0)*spawn_width/2
 	var y = randf_range(-1.0, 1.0)*spawn_height/2
 	var pos = Vector2(x+start_pos.x, y+start_pos.y)

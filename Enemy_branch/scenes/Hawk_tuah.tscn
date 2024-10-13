@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://x450fvd1wuev"]
+[gd_scene load_steps=16 format=3 uid="uid://x450fvd1wuev"]
 
 [ext_resource type="Script" path="res://Enemy_branch/scripts/Flying_spitter/hawk_tuah.gd" id="1_ntkvg"]
 [ext_resource type="Texture2D" uid="uid://jnmv8rto1meq" path="res://Enemy_branch/sprites/Fireball.png" id="2_2f3e7"]
 [ext_resource type="Texture2D" uid="uid://bsvqpf8la14u5" path="res://Enemy_branch/sprites/explosion.png" id="3_dm4ym"]
+[ext_resource type="Script" path="res://Simen/Player/Hitbox.cs" id="4_esyti"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8cc0r"]
 radius = 6.0
@@ -105,6 +106,8 @@ one_shot = true
 position = Vector2(0, 5)
 collision_layer = 0
 collision_mask = 128
+script = ExtResource("4_esyti")
+damage = 1
 
 [node name="hit" type="CollisionShape2D" parent="Hit_box"]
 position = Vector2(0, -1)
