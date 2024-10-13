@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1xr43wel3q04"]
+
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Mob_generator/mob_generator.gd" id="1_j57tg"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Mob_generator/mob_spawner.gd" id="2_8d5io"]
+
+[node name="Mob_generator" type="Node2D"]
+script = ExtResource("1_j57tg")
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="North" type="Node2D" parent="Spawners"]
+script = ExtResource("2_8d5io")
+start_pos = Vector2(0, -1650)
+
+[node name="South" type="Node2D" parent="Spawners"]
+script = ExtResource("2_8d5io")
+start_pos = Vector2(0, 1650)
+
+[node name="East" type="Node2D" parent="Spawners"]
+script = ExtResource("2_8d5io")
+start_pos = Vector2(1650, 0)
+
+[node name="West" type="Node2D" parent="Spawners"]
+script = ExtResource("2_8d5io")
+start_pos = Vector2(-1650, 0)
+
+[node name="Wave_timer" type="Timer" parent="."]

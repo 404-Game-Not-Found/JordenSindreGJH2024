@@ -1,89 +1,89 @@
 [gd_scene load_steps=32 format=3 uid="uid://yrdoow4p5aos"]
 
-[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/basic_enemy_g.gd" id="1_b1dai"]
-[ext_resource type="Script" path="res://Enemy_branch/scripts/State_Machine_Template/StateMachine.gd" id="2_7cn6j"]
-[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/base_state.gd" id="2_bbwx0"]
-[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/charging_up_state.gd" id="3_i1hnu"]
-[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/executing_charge_state.gd" id="4_1og6g"]
-[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/execute_charge_2.gd" id="5_s0oia"]
-[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/cooldown_state.gd" id="6_1br8b"]
-[ext_resource type="Texture2D" uid="uid://dsn7llgddewdg" path="res://Enemy_branch/sprites/Golem-sheet.png" id="7_x6n6s"]
-[ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="9_shrrf"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/basic_enemy_g.gd" id="1_x17a5"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/State_Machine_Template/StateMachine.gd" id="2_ofkkj"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/base_state.gd" id="3_o040x"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/charging_up_state.gd" id="4_kb4ir"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/executing_charge_state.gd" id="5_gbhio"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/execute_charge_2.gd" id="6_sm1se"]
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Rammus/cooldown_state.gd" id="7_34pif"]
+[ext_resource type="Texture2D" uid="uid://dsn7llgddewdg" path="res://Enemy_branch/sprites/Golem-sheet.png" id="8_o4kom"]
+[ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="9_vwry2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_la868"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnqg4"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lcufd"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_df6yi"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gaicd"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wc58"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3ugj"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_570ku"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4nde"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6rge"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cule8"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(448, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph0b4"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sd53k"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(384, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6rob"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58s5s"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3wns"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_un1e0"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xul5c"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x581w"]
-atlas = ExtResource("7_x6n6s")
+atlas = ExtResource("8_o4kom")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mq8m4"]
@@ -166,39 +166,41 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv547"]
-size = Vector2(8, 11)
+[sub_resource type="CircleShape2D" id="CircleShape2D_g87sb"]
+radius = 7.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4h4sg"]
 radius = 50.0
 height = 104.0
 
-[node name="basic_enemy_g" type="CharacterBody2D"]
-collision_layer = 64
-script = ExtResource("1_b1dai")
+[node name="Rammus" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_x17a5")
 
 [node name="state_machine" type="Node" parent="."]
-script = ExtResource("2_7cn6j")
+script = ExtResource("2_ofkkj")
 
 [node name="Base_state" type="Node" parent="state_machine" node_paths=PackedStringArray("timer")]
-script = ExtResource("2_bbwx0")
+script = ExtResource("3_o040x")
 timer = NodePath("../Timer")
 
 [node name="Chargeup_state" type="Node" parent="state_machine" node_paths=PackedStringArray("timer")]
-script = ExtResource("3_i1hnu")
+script = ExtResource("4_kb4ir")
 timer = NodePath("../Timer")
+chargeup_time = 3.0
 
 [node name="Execute_charge" type="Node" parent="state_machine" node_paths=PackedStringArray("timer")]
-script = ExtResource("4_1og6g")
+script = ExtResource("5_gbhio")
 timer = NodePath("../Timer")
 charge_time = 0.2
-charge_speed = 600
+charge_speed = 800
 
 [node name="Execute_charge_2" type="Node" parent="state_machine"]
-script = ExtResource("5_s0oia")
+script = ExtResource("6_sm1se")
 
 [node name="Cooldown_state" type="Node" parent="state_machine" node_paths=PackedStringArray("timer")]
-script = ExtResource("6_1br8b")
+script = ExtResource("7_34pif")
 timer = NodePath("../Timer")
 
 [node name="Timer" type="Timer" parent="state_machine"]
@@ -219,7 +221,7 @@ target_position = Vector2(-13, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_wv547")
+shape = SubResource("CircleShape2D_g87sb")
 
 [node name="snipe_range" type="Area2D" parent="."]
 position = Vector2(0, -6)
@@ -229,4 +231,4 @@ collision_mask = 2
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_4h4sg")
 
-[node name="Gravity" parent="." instance=ExtResource("9_shrrf")]
+[node name="Gravity" parent="." instance=ExtResource("9_vwry2")]

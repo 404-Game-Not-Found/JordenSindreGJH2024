@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://duqm6w7tpc4y4"]
+
+[ext_resource type="PackedScene" uid="uid://x450fvd1wuev" path="res://Enemy_branch/scenes/Hawk_tuah.tscn" id="1_qtucq"]
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="2_flkwq"]
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="3_xbygn"]
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="4_v0qeh"]
+[ext_resource type="PackedScene" uid="uid://c1o31215m1j4m" path="res://Enemy_branch/scenes/Flying_spitter.tscn" id="5_r3eg7"]
+[ext_resource type="PackedScene" uid="uid://yrdoow4p5aos" path="res://Enemy_branch/scenes/Rammus.tscn" id="6_1udl2"]
+[ext_resource type="PackedScene" uid="uid://c1xr43wel3q04" path="res://Enemy_branch/scenes/Mob_generator.tscn" id="7_l43u7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="HawkTuah" parent="." instance=ExtResource("1_qtucq")]
+position = Vector2(532, 483)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(626, 415)
+ignore_rotation = false
+zoom = Vector2(2, 2)
+script = ExtResource("2_flkwq")
+_cameraFollowSpeed = 0.85
+
+[node name="World" parent="." instance=ExtResource("3_xbygn")]
+unique_name_in_owner = true
+position = Vector2(640, 2100)
+scale = Vector2(4, 4)
+
+[node name="Player" parent="." instance=ExtResource("4_v0qeh")]
+unique_name_in_owner = true
+position = Vector2(622, 419)
+collision_mask = 33
+
+[node name="Flying_spitter" parent="." instance=ExtResource("5_r3eg7")]
+position = Vector2(694, 462)
+collision_layer = 72
+
+[node name="Rammus" parent="." instance=ExtResource("6_1udl2")]
+position = Vector2(-780, 644)
+
+[node name="Mob_hub" parent="." node_paths=PackedStringArray("player", "world") instance=ExtResource("7_l43u7")]
+player = NodePath("../Player")
+world = NodePath("../World")
+wave_cooldown = 5.0
