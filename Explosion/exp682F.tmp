@@ -1,0 +1,15 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx1eoyl5hjmte"]
+
+[ext_resource type="Script" path="res://Explosion/explosion.gd" id="1_xhln1"]
+[ext_resource type="Texture2D" uid="uid://blc5auyvvb5vf" path="res://Explosion/golemExplode/shard1.png" id="2_3dllu"]
+[ext_resource type="Texture2D" uid="uid://cqe6s5fdjdysc" path="res://Explosion/golemExplode/shard2.png" id="3_p1ucf"]
+[ext_resource type="Texture2D" uid="uid://miu1flyxdlss" path="res://Explosion/golemExplode/shard3.png" id="4_i86fa"]
+[ext_resource type="Texture2D" uid="uid://bofknlopv4q8c" path="res://Explosion/golemExplode/shard4.png" id="5_mspdm"]
+[ext_resource type="Texture2D" uid="uid://dulucywd5g5qj" path="res://Explosion/golemExplode/shard5.png" id="6_h4jp7"]
+[ext_resource type="Texture2D" uid="uid://b2cduu0y65xrk" path="res://Explosion/golemExplode/shard6.png" id="7_2im1a"]
+
+[node name="explosion" type="Node2D"]
+script = ExtResource("1_xhln1")
+segment_sprites = [ExtResource("2_3dllu"), ExtResource("3_p1ucf"), ExtResource("4_i86fa"), ExtResource("5_mspdm"), ExtResource("6_h4jp7"), ExtResource("7_2im1a")]
+explosion_force = null
+number_of_segments = null
