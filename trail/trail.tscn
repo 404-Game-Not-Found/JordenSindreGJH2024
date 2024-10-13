@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b13360dtbkxpq"]
+
+[ext_resource type="Script" path="res://trail/line_2d.gd" id="1_mb7wd"]
+
+[sub_resource type="Curve" id="Curve_h1myi"]
+_data = [Vector2(0.0105263, 0), 0.0, 0.0, 0, 0, Vector2(0.473684, 0.912088), 0.0, 0.0, 0, 0, Vector2(0.978947, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Trail" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_h1myi")
+default_color = Color(0.298039, 0.168627, 0.145098, 1)
+texture_mode = 1
+script = ExtResource("1_mb7wd")
