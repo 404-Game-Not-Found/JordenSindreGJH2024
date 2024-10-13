@@ -13,6 +13,7 @@ public partial class MovementDrill : _MovementType
 	Area2D trigger;
 	CollisionShape2D collider;
 	AnimatedSprite2D renderer;
+	Gravity gravity;
 
 	public override void _Ready()
 	{
@@ -20,6 +21,7 @@ public partial class MovementDrill : _MovementType
 		trigger = GetNode<Area2D>("%GroundSensor");
 		collider = GetNode<CollisionShape2D>("%Collider");
 		renderer = GetNode<AnimatedSprite2D>("%PlayerRenderer");
+		gravity = GetNode<Gravity>("%Gravity");
 	}
 
 	protected override void ProcessPhysics(double delta)
@@ -36,7 +38,8 @@ public partial class MovementDrill : _MovementType
 		}
 		else
 		{
-			character.Velocity += character.GetGravity() * (float)delta;
+
+			//character.Velocity += character.GetGravity() * (float)delta;
 			GD.Print($"Gravity Velocity: {character.Velocity}");
 		}
 	}
@@ -45,7 +48,7 @@ public partial class MovementDrill : _MovementType
 	{
 		Vector2 mouseDirection = (character.GetGlobalMousePosition() - character.GlobalPosition);
 		//character.Rotate(Mathf.Lerp(0, character.Position.AngleTo(mouseDirection), 0.2f));
-		character.Rotate(Mathf.Lerp(0, character.Transform.BasisXform(Vector2.Down).AngleTo(mouseDirection),0.1f));
+		character.Rotate(Mathf.Lerp(0, character.Transform.BasisXform(Vector2.Down).AngleTo(mouseDirection),0.9f));
 
 		GD.Print($"Mouse direction: {mouseDirection}");
 	}
@@ -95,11 +98,15 @@ public partial class MovementDrill : _MovementType
 	{
 		GD.Print("Area Entered!");
 		isDrilling = true;
+		gravity.isActive = false;
 	}
 
 	public void OnBodyExit(Node2D body)
 	{
+		GD.Print($"Owner: {GetOwner()}");
 		GD.Print("Area Exit!");
 		isDrilling = false;
+		gravity.isActive = true;
+
 	}
 }

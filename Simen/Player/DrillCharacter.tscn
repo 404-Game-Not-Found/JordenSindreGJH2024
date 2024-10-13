@@ -1,39 +1,121 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtfmh41tl8i6l"]
+[gd_scene load_steps=20 format=3 uid="uid://dtfmh41tl8i6l"]
 
-[ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://title-screen/icon.svg" id="1_x3rcr"]
+[ext_resource type="Script" path="res://RadialMovement/Gravity.cs" id="1_nrf8l"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementHandler.cs" id="2_6aycc"]
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementDrill.cs" id="3_06rx5"]
-[ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementNormal.cs" id="4_27cb3"]
+[ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementNormal2.cs" id="3_qjg80"]
+[ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="5_jqgl1"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w5mhy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc43o"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjjnc"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dru4x"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w40g"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4d0g"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ww1d"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h1jm"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jet7i"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oao6"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs75f"]
+atlas = ExtResource("5_jqgl1")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipsqd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_x3rcr")
+"texture": SubResource("AtlasTexture_wc43o")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjjnc")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dru4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w40g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4d0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ww1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h1jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jet7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oao6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs75f")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e48yp"]
-size = Vector2(126, 126)
+size = Vector2(14, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20lnj"]
-size = Vector2(184, 188)
+size = Vector2(36, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tey46"]
-radius = 50.04
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 4
+collision_layer = 65536
+
+[node name="Gravity" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_nrf8l")
 
 [node name="MovementHandler" type="Node" parent="." node_paths=PackedStringArray("initialMovement")]
 script = ExtResource("2_6aycc")
 initialMovement = NodePath("Movement_Drill")
 
 [node name="Movement_Normal" type="Node" parent="MovementHandler"]
-script = ExtResource("4_27cb3")
+script = ExtResource("3_qjg80")
 
 [node name="Movement_Drill" type="Node" parent="MovementHandler"]
 script = ExtResource("3_06rx5")
@@ -42,17 +124,18 @@ drillAcceleration = 100.0
 
 [node name="PlayerRenderer" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-z_index = 10
-sprite_frames = SubResource("SpriteFrames_w5mhy")
+sprite_frames = SubResource("SpriteFrames_ipsqd")
+animation = &"idle"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_e48yp")
 
 [node name="GroundSensor" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 7
-collision_mask = 4
+position = Vector2(0, 4)
+collision_layer = 131072
 input_pickable = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="GroundSensor"]
@@ -66,8 +149,5 @@ input_pickable = false
 priority = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="DrillHitbox"]
-position = Vector2(0, 120)
+position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_tey46")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.515, 0.515)
