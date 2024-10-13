@@ -23,9 +23,13 @@ public class WormStateSearching : WormState
 
 	public override void UpdateState(WormStateManager ctx, double deltaTime)
 	{
+		GD.Print($"WormStateSearching  ctx: {ctx}");
+		GD.Print($"WormStateSearching  Camera: {ctx.Camera}");
+		GD.Print($"WormStateSearching  Player: {ctx.Camera.Player}");
+		GD.Print($"WormStateSearching  Body: {ctx.Body}");
 		if (ctx.Camera.Player.GlobalPosition.DistanceTo(ctx.Body.GlobalPosition) <= ctx.SenseDistance)
 		{
-			ctx.Target = ctx.Camera.Player.GetNode<WormTarget>("WormTarget");
+			ctx.Target = ctx.Camera.Player.GetParent().GetNode<WormTarget>("WormTarget");
 			ctx.SwitchState(ctx.Hunting);
 		}
 		var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
@@ -44,8 +48,9 @@ public class WormStateSearching : WormState
 			_ => throw new ArgumentOutOfRangeException()
 		};
 
-
-		ctx.Body.Rotate(ctx.Body.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi / 2);
+		float angle = ctx.Body.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi / 2;
+		ctx.Body.Rotate(Mathf.Clamp(angle, Mathf.DegToRad(-30), Mathf.DegToRad(30)));
+		GD.Print($"WORM STATE SEARCH   Angle: {Mathf.RadToDeg(angle)}");
 
 		ctx.Body.Velocity += movement;
 		if (ctx.Body.Velocity.Length() >= ctx.MaxSpeed)

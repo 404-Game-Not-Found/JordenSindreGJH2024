@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://yewcxjiuc8ow"]
+[gd_scene load_steps=5 format=3 uid="uid://daxqhq3ev4f4o"]
 
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_p0ruc"]
 [ext_resource type="PackedScene" uid="uid://c8qk5mcvtvtrh" path="res://Simen/camera.tscn" id="3_3gcn2"]
 [ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="3_sh5l4"]
-[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="4_jofe1"]
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/BossHead.tscn" id="4_jofe1"]
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("3_sh5l4")]
 z_index = 10

@@ -1,12 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdmdhaw2ubde7"]
+[gd_scene load_steps=17 format=3 uid="uid://cdmdhaw2ubde7"]
 
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_hag8n"]
-[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="2_wras0"]
 [ext_resource type="PackedScene" uid="uid://cqurkjhpimojy" path="res://Boss/worm_target.tscn" id="3_g0kd7"]
-[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="4_1oyd1"]
+[ext_resource type="PackedScene" uid="uid://c8qk5mcvtvtrh" path="res://Simen/camera.tscn" id="4_f3h4y"]
 [ext_resource type="Script" path="res://Boss/Worm/WormStateManager.cs" id="6_dalk6"]
+[ext_resource type="Script" path="res://MainLoop/Sindre.cs" id="6_yhd0m"]
 [ext_resource type="Texture2D" uid="uid://1pe4xmnyxphg" path="res://title-screen/icon.svg" id="7_f6uki"]
+[ext_resource type="PackedScene" uid="uid://dt8t08xijo0g6" path="res://Audio/player.tscn" id="7_lhal4"]
 [ext_resource type="PackedScene" uid="uid://f2j0guvl8kl1" path="res://Boss/FinalBoss.tscn" id="8_gtlnt"]
+[ext_resource type="AudioStream" uid="uid://dom3curuc7io7" path="res://Audio/jump1.mp3" id="8_tox8y"]
+[ext_resource type="AudioStream" uid="uid://bbb17eopcjcht" path="res://Audio/jump2.mp3" id="9_pjnf7"]
+[ext_resource type="AudioStream" uid="uid://dpd7heujru627" path="res://Audio/landing1.mp3" id="10_hpcns"]
+[ext_resource type="AudioStream" uid="uid://ddvhum87oynfm" path="res://Audio/landing2.mp3" id="11_u2kae"]
+[ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="13_ye0io"]
+[ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="14_hii21"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uckf2"]
+atlas = ExtResource("14_hii21")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60d5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uckf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 
@@ -14,23 +36,15 @@
 scale = Vector2(4, 4)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("4_1oyd1")]
-position = Vector2(716, -1467)
-
-[node name="WormTarget" parent="Player" instance=ExtResource("3_g0kd7")]
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(47, -1660)
-ignore_rotation = false
-script = ExtResource("2_wras0")
+[node name="Camera" parent="." instance=ExtResource("4_f3h4y")]
+position = Vector2(1768.7, -947.701)
 
 [node name="BossNode" parent="." instance=ExtResource("8_gtlnt")]
 position = Vector2(1596, 512)
 
-[node name="Movement2" type="Node" parent="BossNode" node_paths=PackedStringArray("Target", "Camera")]
+[node name="Movement2" type="Node" parent="BossNode" node_paths=PackedStringArray("Camera")]
 script = ExtResource("6_dalk6")
 Direction = 1
-Target = NodePath("../../Player/WormTarget")
 SearchRange = 500
 SenseDistance = 1000
 TurnRange = 5000
@@ -39,3 +53,19 @@ Debug = true
 MovementDeviation = 0.5
 Camera = NodePath("../../Camera")
 MovementAmplitude = 5.0
+
+[node name="PlayerNode" type="Node" parent="."]
+script = ExtResource("6_yhd0m")
+
+[node name="WormTarget" parent="PlayerNode" instance=ExtResource("3_g0kd7")]
+
+[node name="WalkingPlayer" parent="PlayerNode" instance=ExtResource("7_lhal4")]
+_jumpSounds = Array[AudioStreamMP3]([ExtResource("8_tox8y"), ExtResource("9_pjnf7"), ExtResource("8_tox8y"), ExtResource("9_pjnf7")])
+_landingSounds = Array[AudioStreamMP3]([ExtResource("10_hpcns"), ExtResource("11_u2kae"), ExtResource("10_hpcns"), ExtResource("11_u2kae")])
+
+[node name="DrillingPlayer" parent="PlayerNode" instance=ExtResource("13_ye0io")]
+position = Vector2(-2, -1640)
+
+[node name="DrillingPlayerSprite" type="AnimatedSprite2D" parent="PlayerNode/DrillingPlayer"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_60d5n")
