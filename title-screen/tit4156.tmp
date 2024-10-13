@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxewkn1xk3nob"]
+[gd_scene load_steps=18 format=3 uid="uid://cxewkn1xk3nob"]
 
 [ext_resource type="Texture2D" uid="uid://bahae7uvfn10w" path="res://title-screen/assets/BG-test.png" id="1_7vdax"]
 [ext_resource type="Texture2D" uid="uid://bnbfr2aplu6s0" path="res://title-screen/assets/Jorden-logo.png" id="2_2bowj"]
@@ -15,11 +15,34 @@
 [ext_resource type="Script" path="res://title-screen/scripts/AudioCounter.cs" id="11_e4y2h"]
 [ext_resource type="Script" path="res://title-screen/scripts/VolumeSlider.cs" id="11_oehnx"]
 [ext_resource type="Texture2D" uid="uid://c7m0q4kkdruqg" path="res://title-screen/assets/CreditsBG.png" id="14_wh0du"]
-[ext_resource type="Script" path="res://title-screen/bg_3.gd" id="16_vpbls"]
-[ext_resource type="Script" path="res://title-screen/return_button_2.gd" id="17_xf4l2"]
-[ext_resource type="Texture2D" uid="uid://dl3hfydqbud5k" path="res://title-screen/assets/BakomPixelLogo.png" id="18_p54og"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vx1xl"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_lw8v5"]
+script/source = "extends Button
+
+func _ready():
+	# Connect the 'pressed' signal to the function
+	pressed.connect(_on_button_pressed)
+
+func _on_button_pressed():
+	var texture_rect1 = get_node(\"../../BG\")  
+	var texture_rect2 = get_node(\"../../BG3\")  
+
+	if texture_rect1 and texture_rect2:
+		change_texture_rects(texture_rect1, texture_rect2)
+
+func change_texture_rects(texture_rect1: TextureRect, texture_rect2: TextureRect):
+	var target_position1 = texture_rect1.position - Vector2(0, -2*texture_rect1.size.y)
+	var target_position2 = texture_rect2.position - Vector2(0, -2*texture_rect1.size.y)
+
+	# Create a new Tween instance
+	var tween1 = create_tween()  # Tween for texture_rect1
+	var tween2 = create_tween()  # Tween for texture_rect2
+
+	tween1.tween_property(texture_rect1, \"position\", target_position1, 1.0).set_trans(Tween.TRANS_SINE)
+	tween2.tween_property(texture_rect2, \"position\", target_position2, 1.0).set_trans(Tween.TRANS_SINE)
+"
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -245,16 +268,7 @@ offset_bottom = 1440.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_wh0du")
-script = ExtResource("16_vpbls")
-
-[node name="ThanksTo" type="Label" parent="BG3"]
-layout_mode = 0
-offset_left = 534.0
-offset_top = 421.0
-offset_right = 746.0
-offset_bottom = 456.0
-theme_override_font_sizes/font_size = 25
-text = "Special thanks to:"
+script = ExtResource("9_p2pqm")
 
 [node name="ReturnButton2" type="Button" parent="BG3"]
 layout_mode = 1
@@ -268,64 +282,50 @@ offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Return"
-script = ExtResource("17_xf4l2")
+script = SubResource("CSharpScript_lw8v5")
 
-[node name="CreatedBy" type="Label" parent="BG3"]
-layout_mode = 0
-offset_left = 557.0
-offset_top = 59.0
-offset_right = 723.0
-offset_bottom = 101.0
-theme_override_font_sizes/font_size = 30
-text = "Created By:"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_group_ = true
+[node name="HSlider" type="HSlider" parent="BG3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 390.0
+offset_top = 399.0
+offset_right = -390.0
+offset_bottom = -305.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_oehnx")
 
-[node name="Names" type="Label" parent="BG3"]
-layout_mode = 0
-offset_left = 558.0
-offset_top = 118.0
-offset_right = 723.0
-offset_bottom = 271.0
-text = "Thorgal Blanco
-Simen Damm
-Mikal Drivenes
-Nils Michael Fitjar
-Kaspar Tvedt Moberg
-
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="BG3"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 530.0
-offset_top = 469.0
-offset_right = 641.0
-offset_bottom = 509.0
-scale = Vector2(2, 2)
-texture = ExtResource("18_p54og")
-
-[node name="MusicBy" type="Label" parent="BG3"]
-layout_mode = 0
-offset_left = 572.0
-offset_top = 280.0
-offset_right = 709.0
-offset_bottom = 322.0
-theme_override_font_sizes/font_size = 30
-text = "Music By:"
+[node name="AudioLabel" type="Label" parent="BG3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_top = 320.0
+offset_right = -540.0
+offset_bottom = -359.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Audio"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicName" type="Label" parent="BG3"]
-layout_mode = 0
-offset_left = 559.0
-offset_top = 337.0
-offset_right = 722.0
-offset_bottom = 360.0
-text = "Adrian Hegglund"
+[node name="AudioCounter" type="Label" parent="BG3/AudioLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 78.0
+offset_top = 38.0
+offset_right = -77.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "10%"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("11_e4y2h")
