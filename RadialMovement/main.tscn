@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://blfd8ottb8byg"]
+[gd_scene load_steps=10 format=3 uid="uid://blfd8ottb8byg"]
 
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_056me"]
 [ext_resource type="PackedScene" uid="uid://cbb521sli8wyk" path="res://RadialMovement/ParallaxManager.tscn" id="1_f08m2"]
 [ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="1_yty3f"]
 [ext_resource type="PackedScene" uid="uid://ce327s6xn8acw" path="res://RadialMovement/parallax_layer.tscn" id="2_k3ue0"]
 [ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="2_pgc8d"]
-[ext_resource type="Texture2D" uid="uid://qiyeac5ykpaf" path="res://RadialMovement/cloud_layer_2.png" id="2_yikry"]
-[ext_resource type="Texture2D" uid="uid://4kcxvlagayh8" path="res://RadialMovement/cloud_layer_3.png" id="3_epqgo"]
-[ext_resource type="Texture2D" uid="uid://catbfdbecyc4g" path="res://RadialMovement/cloud_layer_1.png" id="4_n2syw"]
+[ext_resource type="Texture2D" uid="uid://dhsbbj5w7vc7l" path="res://RadialMovement/Skyer.png" id="3_m51nl"]
+[ext_resource type="Texture2D" uid="uid://cx1lxsno20c77" path="res://RadialMovement/fjell.png" id="4_nbf2c"]
+[ext_resource type="Texture2D" uid="uid://cdv3d1oobc4p0" path="res://RadialMovement/skog.png" id="5_02nxw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuhwe"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,17 +18,15 @@ position = Vector2(640, 2100)
 scale = Vector2(4, 4)
 
 [node name="ParallaxLayer3" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
-modulate = Color(0.833984, 0.626188, 0, 1)
-texture = ExtResource("3_epqgo")
+texture_filter = 1
+texture = ExtResource("3_m51nl")
 ParallaxRatio = 0.75
 
 [node name="ParallaxLayer2" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
-modulate = Color(0.0459495, 0.599975, 0, 1)
-texture = ExtResource("2_yikry")
+texture = ExtResource("4_nbf2c")
 
 [node name="ParallaxLayer" parent="CloudParallax" instance=ExtResource("2_k3ue0")]
-modulate = Color(0.868392, 0, 0.230566, 1)
-texture = ExtResource("4_n2syw")
+texture = ExtResource("5_02nxw")
 ParallaxRatio = 0.25
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -36,6 +36,8 @@ script = ExtResource("1_yty3f")
 _cameraFollowSpeed = 0.85
 
 [node name="World" parent="." instance=ExtResource("1_056me")]
+texture_filter = 1
+material = SubResource("ShaderMaterial_yuhwe")
 position = Vector2(640, 2100)
 scale = Vector2(4, 4)
 
