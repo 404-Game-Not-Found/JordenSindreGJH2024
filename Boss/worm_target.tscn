@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Boss/WormTarget.cs" id="1_3ow08"]
 
-[node name="WormTarget" type="Node"]
+[node name="WormTarget" type="Node2D"]
 script = ExtResource("1_3ow08")

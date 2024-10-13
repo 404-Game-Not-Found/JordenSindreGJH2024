@@ -1,19 +1,22 @@
 using Godot;
 using System;
 using JordenSindreGJH2024.RadialMovement;
+using JordenSindreGJH2024.Boss;
 
 public partial class Sindre : Node
 {
-	private CharacterBody2D WalkingCharacter { get; set; }
-	private CharacterBody2D DrillingCharacter { get; set; }
-	[Export] private SindreMode _mode = SindreMode.Walking;
-	internal enum SindreMode { Walking, Drilling }
+	public CharacterBody2D WalkingCharacter { get; private set; }
+	public CharacterBody2D DrillingCharacter { get; private set; }
+	[Export] public SindreMode _mode = SindreMode.Walking;
+	public enum SindreMode { Walking, Drilling }
 	private AnimatedSprite2D DrillPlayerSprite { get; set; }
 	private Camera Cam { get; set; }
+	Node2D wormTarget;
 	public override void _Ready()
 	{
 		WalkingCharacter = GetNode<CharacterBody2D>("WalkingPlayer");
 		DrillingCharacter = GetNode<CharacterBody2D>("DrillingPlayer");
+		wormTarget = GetNode<Node2D>("WormTarget");
 		if (DrillingCharacter == null) throw new MissingMemberException("Missing drilling player");
 		if (WalkingCharacter == null) throw new MissingMemberException("Missing walking player");
 		DrillPlayerSprite = GetNode<AnimatedSprite2D>("DrillingPlayer/DrillingPlayerSprite");
@@ -70,6 +73,9 @@ public partial class Sindre : Node
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
+
+		wormTarget.GlobalPosition = DrillingCharacter.GlobalPosition;
+
 		if (!Input.IsActionJustReleased("toggle-sindre-mode")) return;
 		if (Global.DistanceFromGround(DrillingCharacter.GlobalPosition) >= 25 && _mode == SindreMode.Drilling) return;
 		_mode = _mode == SindreMode.Walking ? SindreMode.Drilling : SindreMode.Walking;
