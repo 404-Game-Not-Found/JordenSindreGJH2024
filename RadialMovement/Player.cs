@@ -9,6 +9,8 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D _sprite;
 	private AudioStreamPlayer2D _walkAudio;
 
+	private FloorChecker _floorChecker;
+
 	public override void _Ready()
 	{
 		FloorMaxAngle = 90;
@@ -22,6 +24,11 @@ public partial class Player : CharacterBody2D
 		if (_walkAudio == null) {
 			GD.PrintErr("No AudioStreamPlayer2D with name 'WalkAudio' attached to player...");
 		}
+
+		_floorChecker = GetNodeOrNull<FloorChecker>("FloorChecker");
+		if (_walkAudio == null) {
+			GD.PrintErr("No FloorChecker on player...");
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -29,7 +36,7 @@ public partial class Player : CharacterBody2D
 		Vector2 velocity = GlobalTransform.BasisXformInv(Velocity);
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && _floorChecker.IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
 		}
@@ -37,13 +44,12 @@ public partial class Player : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		Vector2 direction = Input.GetVector("move_left", "move_right", "jump", "crouch");
 
-		GD.Print(IsOnFloor());
 		if (direction.X != 0)
 		{
 			velocity.X = direction.X * Speed;
 
 			// Set run or jump animation
-			if (IsOnFloor()) {
+			if (_floorChecker.IsOnFloor()) {
 				_sprite.Play("run");
 				if (!_walkAudio.Playing)
 					_walkAudio.Play();

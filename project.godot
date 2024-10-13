@@ -36,6 +36,7 @@ project/assembly_name="JordenSindreGJH2024"
 [global_group]
 
 WormGotoTrigger=""
+Ground=""
 
 [input]
 

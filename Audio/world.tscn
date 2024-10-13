@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck31iy0xq7i5e"]
+
+[ext_resource type="Texture2D" uid="uid://t71g88o8vcnf" path="res://RadialMovement/world.png" id="1_wtftd"]
+
+[node name="World" type="StaticBody2D" groups=["Ground"]]
+position = Vector2(3, 1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wtftd")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-3, -392, 58, -388, 115, -375, 165, -355, 211, -330, 245, -305, 277, -277, 306, -245, 332, -208, 351, -174, 366, -139, 378, -101, 386, -69, 390, -35, 392, -4, 391, 35, 384, 80, 371, 125, 356, 164, 339, 197, 317, 231, 290, 263, 258, 295, 223, 323, 182, 347, 141, 366, 108, 377, 72, 385, 40, 390, -3, 392, -51, 389, -92, 381, -128, 370, -164, 356, -196, 339, -224, 321, -250, 301, -274, 280, -297, 255, -316, 231, -333, 206, -351, 173, -366, 140, -378, 103, -385, 74, -390, 41, -392, 10, -391, -26, -388, -62, -380, -97, -368, -136, -351, -174, -332, -208, -304, -247, -275, -279, -246, -305, -212, -329, -179, -348, -144, -364, -110, -376, -77, -384, -50, -389, -25, -391)

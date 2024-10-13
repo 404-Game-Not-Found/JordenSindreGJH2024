@@ -6,6 +6,7 @@ public partial class Gravity : Node
 	public bool isActive = true;
 
 	private CharacterBody2D _parent;
+	private FloorChecker _floorChecker;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -17,6 +18,13 @@ public partial class Gravity : Node
 			return;
 		} else {
 			_parent = GetParent<CharacterBody2D>();
+		}
+
+		_floorChecker = GetParent().GetNodeOrNull<FloorChecker>("FloorChecker");
+		if (_floorChecker == null) {
+			GD.PrintErr($"Parent ({GetParent().Name}) of {Name} does not have a FloorChecker. Freeing the behaviour node...");
+			QueueFree();
+			return;
 		}
 	}
 
@@ -31,7 +39,7 @@ public partial class Gravity : Node
 		_parent.UpDirection = upDirection;
 
 		// Apply gravity if character is not floored
-		if (!_parent.IsOnFloor())
+		if (!_floorChecker.IsOnFloor())
 		{
 			_parent.Velocity += (upDirection * 980) * (float)delta;
 		}
