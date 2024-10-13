@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh0xb5lqe20vi"]
+
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="1_mgffk"]
+[ext_resource type="Script" path="res://MainLoop/Sindre.cs" id="1_xakfj"]
+[ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="2_llgd1"]
+[ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="4_25hf3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uckf2"]
+atlas = ExtResource("4_25hf3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mgmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uckf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sindre" type="Node2D"]
+script = ExtResource("1_xakfj")
+
+[node name="WalkingPlayer" parent="." instance=ExtResource("1_mgffk")]
+position = Vector2(0, -17)
+
+[node name="DrillingPlayer" parent="." instance=ExtResource("2_llgd1")]
+
+[node name="DrillingPlayerSprite" type="AnimatedSprite2D" parent="DrillingPlayer"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_7mgmf")

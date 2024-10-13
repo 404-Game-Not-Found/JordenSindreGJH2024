@@ -5,7 +5,7 @@ class_name flying_spitter extends CharacterBody2D
 @onready var aggression_range: Area2D = $aggression_range
 @onready var world: StaticBody2D = $"../%World"
 
-@onready var player: CharacterBody2D = $"../%Player"
+@onready var player: Camera2D = $"../%Camera"
 
 
 

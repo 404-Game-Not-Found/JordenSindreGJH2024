@@ -5,7 +5,7 @@ class_name rammus extends CharacterBody2D
 @onready var rc_right: RayCast2D = $RayCastRight
 @onready var rc_left: RayCast2D = $RayCastLeft
 @onready var snipe_range: Area2D = $snipe_range
-@onready var player: CharacterBody2D = $"../%Player"
+@onready var player: Camera2D = $"../%Camera"
 
 
 

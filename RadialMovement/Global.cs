@@ -16,6 +16,11 @@ public partial class Global : Node
 		}
 	}
 
+	public static void ReSetup()
+	{
+
+	}
+
 	public static double DistanceFromGround(Vector2 position)
 	{
 		var shape = world.GetNode<CollisionShape2D>("CollisionShape2D");

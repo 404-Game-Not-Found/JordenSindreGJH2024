@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace JordenSindreGJH2024.RadialMovement;
 
 public partial class Camera : Camera2D
 {
@@ -11,10 +12,15 @@ public partial class Camera : Camera2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_player = GetNodeOrNull<CharacterBody2D>("../Player");
+		_player = GetNodeOrNull<Sindre>("../PlayerNode").ActiveBody(this);
 		if (_player == null) {
 			GD.PrintErr("Camera could not find player...");
 		}
+	}
+
+	public void FollowPlayer(CharacterBody2D player)
+	{
+		_player = player;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

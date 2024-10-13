@@ -28,7 +28,6 @@ public partial class MovementDrill : _MovementType
 	{
 		base.ProcessPhysics(delta);
 
-		GD.Print("Rotating drill");
 		DrillRotate(delta);
 
 
@@ -40,7 +39,6 @@ public partial class MovementDrill : _MovementType
 		{
 
 			//character.Velocity += character.GetGravity() * (float)delta;
-			GD.Print($"Gravity Velocity: {character.Velocity}");
 		}
 	}
 
@@ -50,7 +48,6 @@ public partial class MovementDrill : _MovementType
 		//character.Rotate(Mathf.Lerp(0, character.Position.AngleTo(mouseDirection), 0.2f));
 		character.Rotate(Mathf.Lerp(0, character.Transform.BasisXform(Vector2.Down).AngleTo(mouseDirection),0.9f));
 
-		GD.Print($"Mouse direction: {mouseDirection}");
 	}
 
 	void ProcessDrill(double delta)
@@ -64,7 +61,6 @@ public partial class MovementDrill : _MovementType
 		Vector2 newVelocity = (downDirection).Normalized() * velocityMagnitude;
 
 
-		GD.Print($"Drill velocity: {newVelocity}  Magnitude: {newVelocity.Length()}");
 		character.Velocity = newVelocity.Lerp(character.Velocity.Normalized() * velocityMagnitude, 0.7f);
 
 	}
@@ -96,15 +92,12 @@ public partial class MovementDrill : _MovementType
 
 	public void OnBodyEntered(Node2D body)
 	{
-		GD.Print("Area Entered!");
 		isDrilling = true;
 		gravity.isActive = false;
 	}
 
 	public void OnBodyExit(Node2D body)
 	{
-		GD.Print($"Owner: {GetOwner()}");
-		GD.Print("Area Exit!");
 		isDrilling = false;
 		gravity.isActive = true;
 

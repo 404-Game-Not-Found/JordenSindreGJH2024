@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://223afuwsap6a"]
+
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="1_dqsgn"]
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_gmmht"]
+[ext_resource type="PackedScene" uid="uid://duuxbxkqibeup" path="res://RadialMovement/player.tscn" id="2_at52s"]
+[ext_resource type="Script" path="res://MainLoop/FixGlobalScript.cs" id="4_bj416"]
+[ext_resource type="PackedScene" uid="uid://c1xr43wel3q04" path="res://Enemy_branch/scenes/Mob_generator.tscn" id="5_fcyvn"]
+[ext_resource type="Script" path="res://MainLoop/Sindre.cs" id="5_unv4n"]
+[ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="6_11spw"]
+[ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="7_g1sfv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uckf2"]
+atlas = ExtResource("7_g1sfv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhnff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uckf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main" type="Node"]
+
+[node name="World" parent="." instance=ExtResource("1_gmmht")]
+unique_name_in_owner = true
+scale = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[node name="FixGlobalScript" type="Node" parent="."]
+script = ExtResource("4_bj416")
+
+[node name="Mob_generator" parent="." node_paths=PackedStringArray("player", "world") instance=ExtResource("5_fcyvn")]
+player = NodePath("../Camera")
+world = NodePath("../World")
+
+[node name="PlayerNode" type="Node" parent="."]
+script = ExtResource("5_unv4n")
+
+[node name="WalkingPlayer" parent="PlayerNode" instance=ExtResource("2_at52s")]
+position = Vector2(-2, -1640)
+
+[node name="DrillingPlayer" parent="PlayerNode" instance=ExtResource("6_11spw")]
+position = Vector2(-2, -1640)
+
+[node name="DrillingPlayerSprite" type="AnimatedSprite2D" parent="PlayerNode/DrillingPlayer"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_dhnff")
+
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+ignore_rotation = false
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("1_dqsgn")
