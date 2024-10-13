@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://can44hvpbtdx"]
+
+[ext_resource type="PackedScene" uid="uid://cbb521sli8wyk" path="res://RadialMovement/ParallaxManager.tscn" id="1_4bh7k"]
+[ext_resource type="PackedScene" uid="uid://ce327s6xn8acw" path="res://RadialMovement/parallax_layer.tscn" id="2_b36ov"]
+[ext_resource type="Texture2D" uid="uid://4kcxvlagayh8" path="res://RadialMovement/cloud_layer_3.png" id="3_nb0x7"]
+[ext_resource type="Texture2D" uid="uid://qiyeac5ykpaf" path="res://RadialMovement/cloud_layer_2.png" id="4_yqrx3"]
+[ext_resource type="Texture2D" uid="uid://catbfdbecyc4g" path="res://RadialMovement/cloud_layer_1.png" id="5_j735y"]
+[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="6_wx588"]
+[ext_resource type="PackedScene" uid="uid://bulcjb35xg14v" path="res://Audio/music_hole.tscn" id="7_fm1uk"]
+[ext_resource type="PackedScene" uid="uid://dt8t08xijo0g6" path="res://Audio/player.tscn" id="8_7vfwi"]
+[ext_resource type="PackedScene" uid="uid://ck31iy0xq7i5e" path="res://Audio/world.tscn" id="8_404yr"]
+[ext_resource type="AudioStream" uid="uid://blorkak3uq38u" path="res://Audio/Wind wav sound.mp3" id="10_drkb1"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CloudParallax" parent="." instance=ExtResource("1_4bh7k")]
+position = Vector2(640, 2100)
+scale = Vector2(4, 4)
+
+[node name="ParallaxLayer3" parent="CloudParallax" instance=ExtResource("2_b36ov")]
+modulate = Color(0.833984, 0.626188, 0, 1)
+texture = ExtResource("3_nb0x7")
+ParallaxRatio = 0.75
+
+[node name="ParallaxLayer2" parent="CloudParallax" instance=ExtResource("2_b36ov")]
+modulate = Color(0.0459495, 0.599975, 0, 1)
+texture = ExtResource("4_yqrx3")
+
+[node name="ParallaxLayer" parent="CloudParallax" instance=ExtResource("2_b36ov")]
+modulate = Color(0.868392, 0, 0.230566, 1)
+texture = ExtResource("5_j735y")
+ParallaxRatio = 0.25
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(626, 415)
+ignore_rotation = false
+script = ExtResource("6_wx588")
+_cameraFollowSpeed = 0.85
+
+[node name="MusicHole" parent="." instance=ExtResource("7_fm1uk")]
+position = Vector2(2216, 2330)
+rotation = 1.64491
+scale = Vector2(2.25117, 2.25117)
+
+[node name="Player" parent="." instance=ExtResource("8_7vfwi")]
+position = Vector2(637, 499)
+
+[node name="World" parent="." instance=ExtResource("8_404yr")]
+position = Vector2(640, 2100)
+scale = Vector2(4, 4)
+_hitboxRadius = 300.0
+_hitboxResolution = 10
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_drkb1")
+volume_db = -19.676
+autoplay = true

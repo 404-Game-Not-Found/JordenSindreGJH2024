@@ -30,11 +30,7 @@ public partial class Gravity : Node
 		var upDirection = (Global.world.GlobalPosition - _parent.GlobalPosition).Normalized();
 		_parent.UpDirection = upDirection;
 
-		// Apply gravity if character is not floored
-		if (!_parent.IsOnFloor())
-		{
-			_parent.Velocity += (upDirection * 980) * (float)delta;
-		}
+		_parent.Velocity += (upDirection * 980) * (float)delta;
 
 		// Rotate character according to ground
 		_parent.Rotate(_parent.GetAngleTo(Global.world.GlobalPosition) - Mathf.Pi/2);

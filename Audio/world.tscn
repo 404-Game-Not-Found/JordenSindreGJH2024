@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck31iy0xq7i5e"]
+
+[ext_resource type="Texture2D" uid="uid://t71g88o8vcnf" path="res://RadialMovement/world.png" id="1_wtftd"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_a2jia"]
+script/source = "using Godot;
+using System;
+
+public partial class World : StaticBody2D
+{
+	private CollisionPolygon2D _collider;
+	
+	[Export]
+	private float _hitboxRadius;
+
+	[Export]
+	private int _hitboxResolution;
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		_collider = GetNodeOrNull<CollisionPolygon2D>(\"./Collider\");
+		if (_collider == null) {
+			GD.PrintErr(\"No CollisionShape2D on world object\");
+			return;
+		}
+
+		var step = (2 * Mathf.Pi) / _hitboxRadius;
+		var angle = 0.0f;
+
+		var points = new Vector2[_hitboxResolution];
+		for (var i = 0; i < _hitboxResolution; i++) {
+			var x = _hitboxRadius * Mathf.Cos(angle);
+			var y = _hitboxRadius * Mathf.Sin(angle);
+			points[i] = new Vector2(x, y);
+
+			angle += step;
+		}
+
+		// _collider.Polygon = points;
+	}
+}
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wgr38"]
+radius = 393.001
+
+[node name="World" type="StaticBody2D" groups=["Ground"]]
+position = Vector2(3, 1)
+script = SubResource("CSharpScript_a2jia")
+_hitboxRadius = null
+_hitboxResolution = null
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wtftd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wgr38")
