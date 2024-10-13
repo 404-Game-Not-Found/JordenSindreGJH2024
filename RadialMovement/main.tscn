@@ -12,6 +12,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yuhwe"]
 
 [node name="Main" type="Node2D"]
+visible = false
 
 [node name="CloudParallax" parent="." instance=ExtResource("1_f08m2")]
 position = Vector2(640, 2100)

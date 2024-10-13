@@ -3,7 +3,7 @@ using Godot;
 
 namespace JordenSindreGJH2024.Boss;
 
-public partial class WormTarget : JordenSindreGJH2024.Boss.Node
+public partial class WormTarget : Node
 {
 	public Vector2 TargetPosition { get; private set; }
 	private CharacterBody2D _body;
