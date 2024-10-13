@@ -1,0 +1,23 @@
+[gd_scene load_steps=12 format=3 uid="uid://dne4e4qx5nuj"]
+
+[ext_resource type="Script" path="res://Splosion/Explosion.cs" id="1_uk4d0"]
+[ext_resource type="Texture2D" uid="uid://cywn8wo8kjiqh" path="res://Splosion/shard1.png" id="2_qfv6t"]
+[ext_resource type="Texture2D" uid="uid://cha2ls03okqxl" path="res://Splosion/shard2.png" id="3_0w7rf"]
+[ext_resource type="Texture2D" uid="uid://cdb7utq4mfj0c" path="res://Splosion/shard3.png" id="4_dum8l"]
+[ext_resource type="Texture2D" uid="uid://bf40usm3nbkwu" path="res://Splosion/shard4.png" id="5_yw08e"]
+[ext_resource type="Texture2D" uid="uid://1usd7a710hoj" path="res://Splosion/shard5.png" id="6_mbrdu"]
+[ext_resource type="Texture2D" uid="uid://cxvt36fxei57y" path="res://Splosion/shard6.png" id="7_h8brs"]
+[ext_resource type="Texture2D" uid="uid://dj2xaq4m1hpml" path="res://Splosion/shard7.png" id="8_nnw47"]
+[ext_resource type="Texture2D" uid="uid://dy7kh3d18pyi" path="res://Splosion/shard8.png" id="9_8f77c"]
+[ext_resource type="Texture2D" uid="uid://dhqeah1smf2w0" path="res://Splosion/shard9.png" id="10_3fgbn"]
+[ext_resource type="Texture2D" uid="uid://mngd2qalti2j" path="res://Splosion/shard10.png" id="11_pggi7"]
+
+[node name="Explosion" type="Node2D"]
+position = Vector2(616, 352)
+script = ExtResource("1_uk4d0")
+_explosionTextures = Array[Texture2D]([ExtResource("2_qfv6t"), ExtResource("3_0w7rf"), ExtResource("4_dum8l"), ExtResource("5_yw08e"), ExtResource("6_mbrdu"), ExtResource("7_h8brs"), ExtResource("8_nnw47"), ExtResource("9_8f77c"), ExtResource("10_3fgbn"), ExtResource("11_pggi7")])
+_explosionSpeed = 10.0
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
