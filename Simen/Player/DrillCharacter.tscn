@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Simen/Player/Scripts/MovementTypes/MovementNormal2.cs" id="3_qjg80"]
 [ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="5_jqgl1"]
 [ext_resource type="Texture2D" uid="uid://dlae1dxnswlfi" path="res://MainLoop/drill-Sheet.png" id="6_8k0vs"]
+[ext_resource type="Script" path="res://Simen/Player/Hitbox.cs" id="6_8lwn3"]
+[ext_resource type="Script" path="res://Simen/Player/Health.cs" id="6_gt2ma"]
+[ext_resource type="Script" path="res://Simen/Player/Hurtbox.cs" id="7_6nt57"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ovyt"]
 atlas = ExtResource("6_8k0vs")
@@ -113,7 +116,7 @@ animations = [{
 size = Vector2(14, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20lnj"]
-size = Vector2(36, 44)
+size = Vector2(22, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tey46"]
 radius = 8.0
@@ -159,13 +162,32 @@ input_pickable = false
 [node name="CollisionShape" type="CollisionShape2D" parent="GroundSensor"]
 shape = SubResource("RectangleShape2D_20lnj")
 
-[node name="DrillHitbox" type="Area2D" parent="."]
+[node name="DrillHitbox" type="Area2D" parent="." groups=["Drill"]]
 unique_name_in_owner = true
 collision_layer = 256
 collision_mask = 0
 input_pickable = false
 priority = 1
+script = ExtResource("6_8lwn3")
+damage = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="DrillHitbox"]
 position = Vector2(0, 22)
 shape = SubResource("CircleShape2D_tey46")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+unique_name_in_owner = true
+collision_layer = 4096
+collision_mask = 0
+input_pickable = false
+priority = 1
+script = ExtResource("7_6nt57")
+health = NodePath("../Health")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 22)
+shape = SubResource("CircleShape2D_tey46")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_gt2ma")
+maxHealth = 3

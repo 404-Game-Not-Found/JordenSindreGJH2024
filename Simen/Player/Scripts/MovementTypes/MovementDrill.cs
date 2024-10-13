@@ -9,6 +9,7 @@ public partial class MovementDrill : _MovementType
 	[Export] float drillMaxSpeed;
 	[Export] float drillAcceleration;
 	float currentDrillSpeed;
+	float drillControl = 1f;
 
 	Area2D trigger;
 	CollisionShape2D collider;
@@ -32,13 +33,13 @@ public partial class MovementDrill : _MovementType
 
 
 		if (isDrilling)
-		{
 			ProcessDrill(delta);
-		}
-		else
-		{
 
-			//character.Velocity += character.GetGravity() * (float)delta;
+		if(drillControl < 1)
+		{
+			drillControl += 0.02f;
+			if (drillControl > 1)
+				drillControl = 1;
 		}
 	}
 
@@ -46,7 +47,10 @@ public partial class MovementDrill : _MovementType
 	{
 		Vector2 mouseDirection = (character.GetGlobalMousePosition() - character.GlobalPosition);
 		//character.Rotate(Mathf.Lerp(0, character.Position.AngleTo(mouseDirection), 0.2f));
-		character.Rotate(Mathf.Lerp(0, character.Transform.BasisXform(Vector2.Down).AngleTo(mouseDirection),0.9f));
+
+		float characterRotate = Mathf.Lerp(0, character.Transform.BasisXform(Vector2.Down).AngleTo(mouseDirection), 0.2f);
+
+		character.Rotate(Mathf.Lerp(0, characterRotate, drillControl));
 
 	}
 
@@ -86,18 +90,51 @@ public partial class MovementDrill : _MovementType
 		trigger.BodyExited -= OnBodyExit;
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="targetPosition">The global point to bounce away from</param>
+	public void Bounce(Vector2 targetPosition)
+	{
+		Vector2 worldDirection = targetPosition - character.GlobalPosition;
+		character.Velocity = character.Velocity.Reflect(worldDirection.Rotated(Mathf.DegToRad(90)).Normalized());
 
+		character.Rotate(character.Transform.BasisXform(Vector2.Down).AngleTo(character.Velocity));
+		drillControl = 0;
+		ScreenShake.Shake(character.Velocity.Length() / 200);
+	}
 
 
 
 	public void OnBodyEntered(Node2D body)
 	{
+
+		GD.Print($"Area Entered!   {body.Name}");
+
+
+		if (body.IsInGroup(new StringName("Solid")))
+		{
+			GD.Print("SOLID Entered!");
+
+			Bounce(Global.world.GlobalPosition);
+			return;
+		}
+
 		isDrilling = true;
 		gravity.isActive = false;
+
+		ScreenShake.Shake(character.Velocity.Length()/100);
 	}
 
 	public void OnBodyExit(Node2D body)
 	{
+
+		if (body.IsInGroup(new StringName("Solid")))
+			return;
+
+
+		GD.Print($"Owner: {GetOwner()}");
+		GD.Print("Area Exit!");
 		isDrilling = false;
 		gravity.isActive = true;
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1o31215m1j4m"]
+[gd_scene load_steps=33 format=3 uid="uid://c1o31215m1j4m"]
 
 [ext_resource type="Script" path="res://Enemy_branch/scripts/Flying_spitter/flying_spitter.gd" id="1_n43mn"]
 [ext_resource type="Script" path="res://Enemy_branch/scripts/Flying_spitter/base_state.gd" id="2_hgsj6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://p3q1ol5aj50x" path="res://Enemy_branch/sprites/birdie.png" id="6_6d4y4"]
 [ext_resource type="Texture2D" uid="uid://dsn7llgddewdg" path="res://Enemy_branch/sprites/Golem-sheet.png" id="8_noyib"]
 [ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="9_75v12"]
+[ext_resource type="Script" path="res://Simen/Player/Health.cs" id="9_gubal"]
+[ext_resource type="Script" path="res://Simen/Player/Hurtbox.cs" id="9_t1ams"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_la868"]
 atlas = ExtResource("8_noyib")
@@ -158,13 +160,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g87sb"]
-radius = 14.0
+radius = 12.0416
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lw2pn"]
 radius = 258.94
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxgix"]
 radius = 105.005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1psj"]
+radius = 18.0278
 
 [node name="Flying_spitter" type="CharacterBody2D"]
 position = Vector2(1, 0)
@@ -220,3 +225,19 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggression_range"]
 visible = false
 shape = SubResource("CircleShape2D_cxgix")
+
+[node name="Hurt_box" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("9_t1ams")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_box"]
+position = Vector2(5, 3)
+shape = SubResource("CircleShape2D_n1psj")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_gubal")
+maxHealth = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

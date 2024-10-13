@@ -4,6 +4,7 @@ class_name flying_spitter extends CharacterBody2D
 @onready var snipe_range: Area2D = $snipe_range
 @onready var aggression_range: Area2D = $aggression_range
 @onready var world: StaticBody2D = $"../%World"
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var player: Camera2D = $"../%Camera"
 
@@ -43,7 +44,8 @@ func hover(delta):
 
 func _physics_process(delta: float) -> void:
 	#negate the gravity
-	
+	if get_node("Health").health <= 0:
+		queue_free()
 	velocity_ = global_transform.basis_xform_inv(velocity)
 	hover(delta)
 	

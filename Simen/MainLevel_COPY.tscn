@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://blua5m7v0ih45"]
+[gd_scene load_steps=5 format=3 uid="uid://yewcxjiuc8ow"]
 
-[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="2_hsu1j"]
+[ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_p0ruc"]
+[ext_resource type="PackedScene" uid="uid://c8qk5mcvtvtrh" path="res://Simen/camera.tscn" id="3_3gcn2"]
 [ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="3_sh5l4"]
-[ext_resource type="Script" path="res://RadialMovement/Camera.cs" id="4_dnkvp"]
+[ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/Boss.tscn" id="4_jofe1"]
 
 [node name="Main" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("2_hsu1j")]
+[node name="Player" parent="." instance=ExtResource("3_sh5l4")]
+z_index = 10
+position = Vector2(0, -1655)
+
+[node name="World" parent="." instance=ExtResource("1_p0ruc")]
 scale = Vector2(4, 4)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("3_sh5l4")]
-position = Vector2(0, -1608)
+[node name="World2" parent="." groups=["Solid"] instance=ExtResource("1_p0ruc")]
+z_index = 100
+scale = Vector2(1.845, 1.845)
+metadata/_edit_lock_ = true
 
-[node name="Camera" type="Camera2D" parent="."]
-ignore_rotation = false
-script = ExtResource("4_dnkvp")
+[node name="Camera" parent="." instance=ExtResource("3_3gcn2")]
+
+[node name="Boss" parent="." instance=ExtResource("4_jofe1")]
+position = Vector2(-64, -1504)
