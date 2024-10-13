@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://223afuwsap6a"]
+[gd_scene load_steps=26 format=3 uid="uid://223afuwsap6a"]
 
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_gmmht"]
 [ext_resource type="Script" path="res://MainLoop/FixGlobalScript.cs" id="4_bj416"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cqurkjhpimojy" path="res://Boss/worm_target.tscn" id="19_tpj77"]
 [ext_resource type="PackedScene" uid="uid://f2j0guvl8kl1" path="res://Boss/FinalBoss.tscn" id="21_2iccc"]
 [ext_resource type="AudioStream" uid="uid://blorkak3uq38u" path="res://Audio/Wind wav sound.mp3" id="22_fil0r"]
+[ext_resource type="PackedScene" uid="uid://bulcjb35xg14v" path="res://Audio/music_hole.tscn" id="23_xa3cb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uckf2"]
 atlas = ExtResource("7_g1sfv")
@@ -105,3 +106,7 @@ position = Vector2(-287, 1938)
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_fil0r")
 autoplay = true
+
+[node name="MusicHole" parent="." instance=ExtResource("23_xa3cb")]
+position = Vector2(652, 1392)
+rotation = 2.72658
