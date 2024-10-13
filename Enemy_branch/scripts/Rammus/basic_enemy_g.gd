@@ -10,7 +10,7 @@ class_name rammus extends CharacterBody2D
 
 
 
-@export var SPEED = 100.0
+@export var SPEED = 200.0
 @export var JUMP_VELOCITY = -170.0
 var velocity_ = Vector2(0, 0)
 var charge_direction = null
@@ -27,7 +27,6 @@ func set_charge_dir():
 
 func kill():
 	queue_free()
-
 func _ready() -> void:
 	floor_max_angle = 90
 

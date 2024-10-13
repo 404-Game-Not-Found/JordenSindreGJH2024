@@ -53,6 +53,7 @@ animations = [{
 }]
 
 [node name="Explosion" type="Node2D"]
+top_level = true
 position = Vector2(616, 352)
 script = ExtResource("1_uk4d0")
 _explosionTextures = Array[Texture2D]([ExtResource("2_dopqw"), ExtResource("3_2lcp6"), ExtResource("4_khl3h"), ExtResource("5_76eh8"), ExtResource("6_4jmqn"), ExtResource("7_i4cx3"), ExtResource("8_mgs2y"), ExtResource("9_g7lwg"), ExtResource("10_xuok8"), ExtResource("11_1g71y")])

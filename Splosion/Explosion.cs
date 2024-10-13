@@ -39,6 +39,7 @@ public partial class Explosion : Node2D
 		_explosionAudio.Play();
 		_cloudSprite.Visible = true;
 		_cloudSprite.Play("explode");
+		GetParent().GetNode<AnimatedSprite2D>("AnimatedSprite2D").Visible = false;
 		_deleteTimer.Start();
 	}
 
@@ -68,10 +69,9 @@ public partial class Explosion : Node2D
 		}
 		_cloudSprite.AnimationFinished += () => _cloudSprite.Visible = false;
 
-		_deleteTimer.Timeout += QueueFree;
+		_deleteTimer.Timeout += GetParent().QueueFree;
 
 		GD.Randomize();
-		Explode();
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {

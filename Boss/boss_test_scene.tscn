@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdmdhaw2ubde7"]
+[gd_scene load_steps=19 format=3 uid="uid://cdmdhaw2ubde7"]
 
 [ext_resource type="PackedScene" uid="uid://c8kawbslsm47" path="res://RadialMovement/world.tscn" id="1_hag8n"]
 [ext_resource type="PackedScene" uid="uid://cqurkjhpimojy" path="res://Boss/worm_target.tscn" id="3_g0kd7"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://ddvhum87oynfm" path="res://Audio/landing2.mp3" id="11_u2kae"]
 [ext_resource type="PackedScene" uid="uid://dtfmh41tl8i6l" path="res://Simen/Player/DrillCharacter.tscn" id="13_ye0io"]
 [ext_resource type="Texture2D" uid="uid://cmggss2u0xh0m" path="res://RadialMovement/Sindre-Sheet.png" id="14_hii21"]
+[ext_resource type="Script" path="res://Simen/Player/Health.cs" id="15_cpwlq"]
+[ext_resource type="Script" path="res://MainLoop/OnDeathNode.cs" id="16_jo1sx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uckf2"]
 atlas = ExtResource("14_hii21")
@@ -70,3 +72,11 @@ position = Vector2(-2, -1640)
 [node name="DrillingPlayerSprite" type="AnimatedSprite2D" parent="PlayerNode/DrillingPlayer"]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_60d5n")
+
+[node name="Health" type="Node" parent="PlayerNode"]
+script = ExtResource("15_cpwlq")
+maxHealth = 3
+
+[node name="OnDeathNode" type="Node" parent="PlayerNode"]
+script = ExtResource("16_jo1sx")
+SceneName = "res://title-screen/title_screen.tscn"

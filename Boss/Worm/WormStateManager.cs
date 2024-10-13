@@ -29,18 +29,21 @@ public partial class WormStateManager : Node
 	internal readonly WormState Hunting = new WormStateHunting();
 	internal readonly WormState Searching = new WormStateSearching();
 	internal CollisionShape2D CollisionShape2D { get; private set; }
+	internal bool isAirborne { get; set; } = false;
 	
 	internal enum WormDirection
-		{
-			Left,
-			Right
-		}
+	{
+		Left,
+		Right
+	}
 
 	internal CharacterBody2D Body { get; private set; }
 	[Export] internal float MovementAmplitude { get; private set; }
+	private Gravity _gravity;
 
 	public override void _Ready()
 	{
+		_gravity = GetParent().GetNodeOrNull<Gravity>("Gravity");
 		_currentState = Searching;
 		Body = GetParent().GetNode<CharacterBody2D>("Boss");
 		if (Body is null) throw new MissingMemberException("Expected character body 2D"); 
@@ -50,6 +53,9 @@ public partial class WormStateManager : Node
 
 	public override void _Process(double delta)
 	{
+		isAirborne = Global.DistanceFromGround(Body.GlobalPosition) <= 10;
+		_gravity.isActive = isAirborne;
+		GD.Print("IsAirborne: ", isAirborne);
 		_currentState.UpdateState(this, delta);
 	}
 

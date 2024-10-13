@@ -16,6 +16,12 @@ public class WormStateHunting : WormState
 	    {
 		    ctx.SwitchState(ctx.Searching);
 	    }
+
+	    if (ctx.isAirborne)
+	    {
+		    ctx.Body.MoveAndSlide();
+		    return;
+	    }
 	    
 		//var movement = ctx.Body.Velocity.Normalized();
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://f2j0guvl8kl1"]
+[gd_scene load_steps=5 format=3 uid="uid://f2j0guvl8kl1"]
 
 [ext_resource type="PackedScene" uid="uid://s8twmlvqdtcg" path="res://Boss/BossHead.tscn" id="1_58c3h"]
 [ext_resource type="PackedScene" uid="uid://b1slwxwf6b4y1" path="res://Boss/BossSegment.tscn" id="2_x52no"]
 [ext_resource type="PackedScene" uid="uid://brgras1ylv7jx" path="res://Boss/BossTail.tscn" id="3_amo67"]
+[ext_resource type="PackedScene" uid="uid://be48etet3ru4m" path="res://RadialMovement/gravity.tscn" id="4_qjevj"]
 
 [node name="BossNode" type="Node2D"]
 position = Vector2(433, 1174)
@@ -94,3 +95,6 @@ angular_limit_upper = 0.0872665
 
 [node name="BossTail" parent="." instance=ExtResource("3_amo67")]
 position = Vector2(-242, -1177)
+
+[node name="Gravity" parent="." node_paths=PackedStringArray("_parent") instance=ExtResource("4_qjevj")]
+_parent = NodePath("../Boss")

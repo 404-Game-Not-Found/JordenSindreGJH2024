@@ -32,6 +32,12 @@ public class WormStateSearching : WormState
 			ctx.Target = ctx.Camera.Player.GetParent().GetNode<WormTarget>("WormTarget");
 			ctx.SwitchState(ctx.Hunting);
 		}
+
+		if (ctx.isAirborne)
+		{
+		    ctx.Body.MoveAndSlide();
+			return;
+		}
 		var upDirection = (Global.world.GlobalPosition - ctx.Body.GlobalPosition).Normalized();
 		var movement = new Vector2(upDirection.Y, -upDirection.X);
 		

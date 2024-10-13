@@ -11,7 +11,7 @@ public partial class OnDeathNode : Node
 		_health = GetNode<Health>("../Health");
 		_health.OnDead += () =>
 		{
-			GetTree().ChangeSceneToFile(SceneName);
+			//GetTree().ChangeSceneToFile(SceneName);
 		};
 	}
 }

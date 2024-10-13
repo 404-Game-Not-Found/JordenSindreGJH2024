@@ -38,6 +38,7 @@ project/assembly_name="JordenSindreGJH2024"
 WormGotoTrigger=""
 Ground=""
 Drill=""
+Player=""
 
 [input]
 
