@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq3l74etq1t7n"]
+
+[ext_resource type="Script" path="res://Enemy_branch/scripts/Mob_generator/mob_spawner.gd" id="1_0f0gh"]
+
+[node name="Mob_spawner" type="Node2D"]
+script = ExtResource("1_0f0gh")

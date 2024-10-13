@@ -27,10 +27,8 @@ scale = Vector2(4, 4)
 position = Vector2(622, 419)
 collision_mask = 33
 
-[node name="Flying_spitter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_an7pn")]
+[node name="Flying_spitter" parent="." instance=ExtResource("4_an7pn")]
 position = Vector2(694, 462)
 collision_layer = 72
-player = NodePath("../Player")
 
-[node name="Rammus" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_3xchb")]
-player = NodePath("../Player")
+[node name="Rammus" parent="." instance=ExtResource("6_3xchb")]

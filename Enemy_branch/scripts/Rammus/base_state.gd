@@ -11,6 +11,8 @@ extends Enemy_Standard_State
 	
 
 func physics_update(_delta: float) -> void:
+	print(entity)
+	print(entity.player)
 	var enemy_pos = entity.player.global_transform.basis_xform_inv(entity.position)
 	var player_pos = entity.player.global_transform.basis_xform_inv(entity.player.position)
 	if enemy_pos.x + 3 < player_pos.x:

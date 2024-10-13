@@ -5,7 +5,7 @@ class_name rammus extends CharacterBody2D
 @onready var rc_right: RayCast2D = $RayCastRight
 @onready var rc_left: RayCast2D = $RayCastLeft
 @onready var snipe_range: Area2D = $snipe_range
-@export var player: CharacterBody2D = null
+@onready var player: CharacterBody2D = $"../%Player"
 
 
 
@@ -24,6 +24,7 @@ func set_charge_dir():
 	charge_direction = position.direction_to(player.position).normalized()
 
 func _ready() -> void:
+	print("player: ", player)
 	floor_max_angle = 90
 
 
