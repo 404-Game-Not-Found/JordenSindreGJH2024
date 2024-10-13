@@ -42,7 +42,6 @@ func _process(delta: float) -> void:
 
 
 func spawn_waves(wave):
-	print("spawning wave")
 	for i in range(rammus_wave[wave]):
 		var spawned = 0
 		var viable_spawner = null

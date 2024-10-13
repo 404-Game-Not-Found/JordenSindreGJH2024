@@ -16,7 +16,7 @@ shader_parameter/texture_grass = ExtResource("4_twhyc")
 shader_parameter/texture_dirt = ExtResource("3_cmc3w")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wyh0f"]
-radius = 393.001
+radius = 384.0
 
 [node name="World" type="StaticBody2D"]
 position = Vector2(3, 1)
